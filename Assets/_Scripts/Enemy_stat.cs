@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Enemy_stat : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public string enemyName;
+    public int MaxHealth;
+    public int currentHealth;
+    public int NBQuestion;
+    public int damage;
+    public int TrueDammage;
+    public int currentPart;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        NBQuestion = 3;
+        MaxHealth = NBQuestion;
+        currentHealth = MaxHealth;
+        TrueDammage = 10;
+        damage = 10 * 2 ^ currentPart * 20;
     }
 }
