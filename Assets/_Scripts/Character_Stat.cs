@@ -6,7 +6,7 @@ public class Character_Stat : MonoBehaviour
 {
     public string gender;
 
-    public int level;
+    public int level = 1;
     public int damage;
     public int maxHealth;
     public int currentHealth;
