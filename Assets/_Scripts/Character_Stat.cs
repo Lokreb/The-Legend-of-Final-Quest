@@ -11,9 +11,9 @@ public class Character_Stat : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public List<Sprite> sprites;
-    public double FinalDammage;
+    public int FinalDammage;
     SpriteRenderer spriteRenderer;
-    
+    public int dammagetaken;
 
     void Start()
     {
@@ -37,10 +37,22 @@ public class Character_Stat : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    void CalculedDammage()
+   public void CalculedDammage()
     {
         FinalDammage = level * 2 ^ level * damage;
     }
 
-    
+    public bool TakeDamage(int dammage,int trueDammage)
+    {
+
+        currentHealth = currentHealth - trueDammage;
+        //affichage de faux dommage 
+        if (currentHealth <= 0)
+        {
+            return true;
+        }
+        else { return false; }
+    }
 }
+    
+

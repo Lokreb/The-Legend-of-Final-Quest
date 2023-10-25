@@ -12,26 +12,105 @@ public class BattleSystem : MonoBehaviour
 public BattleState state;
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
-
+    public GameObject QuestionManagerGO;
      public TMP_Text lvl;
      public TMP_Text Enemyname;
      public Slider EnemyHPBar;
      public Slider PlayerHPBar;
 
+
+    public Enemy_stat enemy_unit;
+    public Character_Stat player_unit;
         void Start()
     {
         state = BattleState.START;
-        SetupBattle();
+        StartCoroutine(SetupBattle());
     }
-    void SetupBattle()
+    IEnumerator SetupBattle()
     {
+        QuestionManagerGO.GetComponent<QuestionManager>();
          GameObject PlayerGO = Instantiate(playerPrefab);
-         PlayerGO.GetComponent<Character_Stat>();
+        player_unit =  PlayerGO.GetComponent<Character_Stat>();
          GameObject EnemyGO = Instantiate(enemyPrefab);
-         EnemyGO.GetComponent<Enemy_stat>();
-        Enemyname.text = "" +EnemyGO.GetComponentInParent<Enemy_stat>().enemyName;
-        lvl.text = ""+ PlayerGO.GetComponentInParent<Character_Stat>().level.ToString();
-        EnemyHPBar.maxValue = EnemyGO.GetComponentInParent<Enemy_stat>().MaxHealth;
-        PlayerHPBar.maxValue = PlayerGO.GetComponentInParent<Character_Stat>().maxHealth;
+         enemy_unit = EnemyGO.GetComponent<Enemy_stat>();
+        Enemyname.text = "" + enemy_unit.enemyName;
+        lvl.text = ""+ player_unit.level.ToString();
+        enemy_unit.NBQuestion = QuestionManagerGO.GetComponent<QuestionManager>().NbQuestion;
+        enemy_unit.initiallisationHP();
+        EnemyHPBar.maxValue = enemy_unit.MaxHealth;
+        PlayerHPBar.maxValue = player_unit.maxHealth;
+
+        
+        state = BattleState.PLAYERTURN;
+        yield return new WaitForSeconds(2f);
+        PlayerTurn();
+    }
+
+    void PlayerTurn()
+    {
+        Debug.Log("Player Turn");
+    }
+
+    public void OnAttackButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(PlayerAttack());
+    }
+
+    IEnumerator PlayerAttack()
+    {
+        player_unit.CalculedDammage();
+        bool isdead = enemy_unit.TakeDamage(player_unit.FinalDammage);
+        EnemyHPBar.value = enemy_unit.currentHealth;
+        yield return new WaitForSeconds(2f);
+
+        if(isdead)
+        {
+            EndBattle();
+            state = BattleState.WON;
+        }else
+        {
+            state = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
+        }
+        IEnumerator EnemyTurn()
+        {
+            Debug.Log("tours enemmie");
+            yield return new WaitForSeconds(1f);
+            bool isDead = player_unit.TakeDamage(enemy_unit.damage,enemy_unit.TrueDammage);
+            PlayerHPBar.value = player_unit.currentHealth;
+            yield return new WaitForSeconds(1f);
+
+            if(isdead)
+            {
+                
+                state = BattleState.LOST;
+                EndBattle();
+            }
+            else
+            {
+                state = BattleState.PLAYERTURN;
+                PlayerTurn();
+            }
+        }
+
+        void EndBattle()
+        {
+            if (state == BattleState.WON)
+            {
+                Debug.Log("tu a gagner");
+            }
+            else if (state == BattleState.LOST)
+            {
+                Debug.Log("tu a perdu");
+            } 
+
+        }
+
+
+        //chek if question is end
+        //change state based on that
     }
 }

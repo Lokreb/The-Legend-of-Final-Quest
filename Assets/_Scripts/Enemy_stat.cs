@@ -14,10 +14,28 @@ public class Enemy_stat : MonoBehaviour
 
     void Start()
     {
-        NBQuestion = 3;
+        
         MaxHealth = NBQuestion;
         currentHealth = MaxHealth;
         TrueDammage = 10;
         damage = 10 * 2 ^ currentPart * 20;
+    }
+
+    public void initiallisationHP()
+    {
+        MaxHealth = NBQuestion;
+        currentHealth = MaxHealth;
+    }
+
+    public bool TakeDamage(int dammage)
+    {
+
+        currentHealth = currentHealth - 1;
+        //affichage de faux dommage 
+        if (currentHealth <= 0)
+        {
+            return true;
+        }
+        else { return false; }
     }
 }

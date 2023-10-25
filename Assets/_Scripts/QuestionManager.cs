@@ -13,6 +13,7 @@ public class Question
     public List<string> choices;
     public int minValue;
     public int maxValue;
+   
 }
 
 [System.Serializable]
@@ -26,7 +27,7 @@ public class QuestionManager : MonoBehaviour
     public TMP_Text questionText;
     public TMP_Text[] answerTexts;
     public GameObject questionPanel;
-
+    public int NbQuestion;
     private QuestionData questionData;
     private int currentQuestionIndex;
 
@@ -34,6 +35,7 @@ public class QuestionManager : MonoBehaviour
     {
         LoadQuestionsFromJSON(); // Charger les questions depuis le fichier JSON
         currentQuestionIndex = 0;
+        NbQuestion = questionData.questions.Count;
         DisplayQuestion(currentQuestionIndex); // Afficher la première question
     }
 
