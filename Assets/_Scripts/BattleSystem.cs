@@ -13,6 +13,8 @@ public BattleState state;
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     public GameObject QuestionManagerGO;
+    public Button[] questionBouton;
+    public bool isPlayerTurn;
      public TMP_Text lvl;
      public TMP_Text Enemyname;
      public Slider EnemyHPBar;
@@ -26,6 +28,24 @@ public BattleState state;
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
+
+    private void Update()
+    {
+        if(state == BattleState.PLAYERTURN)
+        {
+            foreach(Button bouton in questionBouton)
+            {
+                bouton.interactable = true;
+            }
+        } else
+        {
+            foreach (Button bouton in questionBouton)
+            {
+                bouton.interactable = false;
+            }
+        }
+    }
+
     IEnumerator SetupBattle()
     {
         QuestionManagerGO.GetComponent<QuestionManager>();

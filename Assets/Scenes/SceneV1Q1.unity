@@ -2998,6 +2998,11 @@ MonoBehaviour:
   playerPrefab: {fileID: 6163404627947567600, guid: 3cd8c64793a1cf24b9ffac1274435dc1, type: 3}
   enemyPrefab: {fileID: 8411087560177983591, guid: 416f50519e9d89146a0dabee32676c73, type: 3}
   QuestionManagerGO: {fileID: 2021807004}
+  questionBouton:
+  - {fileID: 121857340}
+  - {fileID: 1147593368}
+  - {fileID: 574409307}
+  - {fileID: 2042819189}
   lvl: {fileID: 320225164}
   Enemyname: {fileID: 620863430}
   EnemyHPBar: {fileID: 587514653}
