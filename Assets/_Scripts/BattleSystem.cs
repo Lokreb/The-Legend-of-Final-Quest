@@ -44,6 +44,7 @@ public BattleState state;
                 bouton.interactable = false;
             }
         }
+
     }
 
     IEnumerator SetupBattle()
@@ -55,6 +56,7 @@ public BattleState state;
          enemy_unit = EnemyGO.GetComponent<Enemy_stat>();
         Enemyname.text = "" + enemy_unit.enemyName;
         lvl.text = ""+ player_unit.level.ToString();
+        yield return new WaitForSeconds(1f);
         enemy_unit.NBQuestion = QuestionManagerGO.GetComponent<QuestionManager>().NbQuestion;
         enemy_unit.initiallisationHP();
         EnemyHPBar.maxValue = enemy_unit.MaxHealth;

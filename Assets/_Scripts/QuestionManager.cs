@@ -36,6 +36,7 @@ public class QuestionManager : MonoBehaviour
         LoadQuestionsFromJSON(); // Charger les questions depuis le fichier JSON
         currentQuestionIndex = 0;
         NbQuestion = questionData.questions.Count;
+        
         DisplayQuestion(currentQuestionIndex); // Afficher la première question
     }
 
