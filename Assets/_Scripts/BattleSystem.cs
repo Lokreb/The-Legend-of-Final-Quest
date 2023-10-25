@@ -13,13 +13,10 @@ public BattleState state;
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
 
-    Character_Stat playerstats;
-    
-    Enemy_stat enemystats;
-
      public TMP_Text lvl;
      public TMP_Text Enemyname;
-
+     public Slider EnemyHPBar;
+     public Slider PlayerHPBar;
 
         void Start()
     {
@@ -34,6 +31,7 @@ public BattleState state;
          EnemyGO.GetComponent<Enemy_stat>();
         Enemyname.text = "" +EnemyGO.GetComponentInParent<Enemy_stat>().enemyName;
         lvl.text = ""+ PlayerGO.GetComponentInParent<Character_Stat>().level.ToString();
-        
+        EnemyHPBar.maxValue = EnemyGO.GetComponentInParent<Enemy_stat>().MaxHealth;
+        PlayerHPBar.maxValue = PlayerGO.GetComponentInParent<Character_Stat>().maxHealth;
     }
 }
