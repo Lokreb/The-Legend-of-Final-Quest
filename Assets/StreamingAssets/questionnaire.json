@@ -10,14 +10,42 @@
             ]
         },
         {
+            "questionType": "choice",
+            "questionText": "Aimez vous les bananes ?",
+            "choices": [
+                "J en mange tout les jours",
+                "Tu me prends pour un singe?",
+                "J aime pas du tout",
+                "Meilleur fruit de la galaxie"
+            ]
+        },
+        {
+            "questionType": "choice",
+            "questionText": "Comment trouve tu Mario Wonder ?",
+            "choices": [
+                "Trop facile",
+                "Trop dur",
+                "J aime le challenge",
+                "Avec de la perseverance on y  arrive"
+            ]
+        },
+        {
+            "questionType": "choice",
+            "questionText": "Êtes-vous un homme, une femme ou autre ?",
+            "choices": [
+                "Je suis un homme",
+                "Je suis une femme",
+                "Autre"
+            ]
+        },
+        {
             "questionType": "multiple-choice",
             "questionText": "Quelles couleurs préférez-vous ?",
             "choices": [
                 "Rouge",
                 "Bleu",
                 "Vert",
-                "Jaune",
-                "Autre"
+                "Jaune"
             ]
         },
         {
