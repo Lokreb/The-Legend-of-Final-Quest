@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 using System.IO;
-using TMPro;
 
 [System.Serializable]
 public class Question
@@ -28,12 +28,13 @@ public class QuestionManager : MonoBehaviour
     public GameObject questionPanel;
 
     private QuestionData questionData;
-    private Question currentQuestion;
+    private int currentQuestionIndex;
 
     void Start()
     {
         LoadQuestionsFromJSON(); // Charger les questions depuis le fichier JSON
-        DisplayRandomQuestion(); // Afficher une question aléatoire
+        currentQuestionIndex = 0;
+        DisplayQuestion(currentQuestionIndex); // Afficher la première question
     }
 
     void LoadQuestionsFromJSON()
@@ -44,46 +45,59 @@ public class QuestionManager : MonoBehaviour
         questionData = JsonUtility.FromJson<QuestionData>(json);
     }
 
-    void DisplayRandomQuestion()
+    void DisplayQuestion(int questionIndex)
     {
-        int randomIndex = Random.Range(0, questionData.questions.Count);
-        currentQuestion = questionData.questions[randomIndex];
-
-        questionText.text = currentQuestion.questionText;
-
-        if (currentQuestion.questionType == "choice" || currentQuestion.questionType == "multiple-choice")
+        if (questionIndex < questionData.questions.Count)
         {
-            for (int i = 0; i < answerTexts.Length; i++)
+            Question currentQuestion = questionData.questions[questionIndex];
+
+            questionText.text = currentQuestion.questionText;
+
+            if (currentQuestion.questionType == "choice" || currentQuestion.questionType == "multiple-choice")
             {
-                if (i < currentQuestion.choices.Count)
+                for (int i = 0; i < answerTexts.Length; i++)
                 {
-                    answerTexts[i].text = currentQuestion.choices[i];
+                    if (i < currentQuestion.choices.Count)
+                    {
+                        answerTexts[i].text = currentQuestion.choices[i];
+                        answerTexts[i].gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        answerTexts[i].gameObject.SetActive(false);
+                    }
+                }
+            }
+            else if (currentQuestion.questionType == "scale")
+            {
+                // Afficher une échelle, par exemple, de 1 à 10
+                for (int i = 0; i < answerTexts.Length; i++)
+                {
+                    answerTexts[i].text = (currentQuestion.minValue + i).ToString();
                     answerTexts[i].gameObject.SetActive(true);
                 }
-                else
+            }
+            else
+            {
+                // Cacher les réponses si c'est une question à réponse libre
+                for (int i = 0; i < answerTexts.Length; i++)
                 {
                     answerTexts[i].gameObject.SetActive(false);
                 }
             }
-        }
-        else if (currentQuestion.questionType == "scale")
-        {
-            // Afficher une échelle, par exemple, de 1 à 10
-            for (int i = 0; i < answerTexts.Length; i++)
-            {
-                answerTexts[i].text = (currentQuestion.minValue + i).ToString();
-                answerTexts[i].gameObject.SetActive(true);
-            }
+
+            questionPanel.SetActive(true);
         }
         else
         {
-            // Cacher les réponses si c'est une question à réponse libre
-            for (int i = 0; i < answerTexts.Length; i++)
-            {
-                answerTexts[i].gameObject.SetActive(false);
-            }
+            Debug.Log("Toutes les questions ont été posées.");
+            questionPanel.SetActive(false);
         }
+    }
 
-        questionPanel.SetActive(true);
+    public void NextQuestion()
+    {
+        currentQuestionIndex++;
+        DisplayQuestion(currentQuestionIndex);
     }
 }

@@ -6,7 +6,8 @@
             "choices": [
                 "Je suis un homme",
                 "Je suis une femme",
-                "Autre"
+                "Autre",
+                ""
             ]
         },
         {
@@ -16,26 +17,27 @@
                 "J en mange tout les jours",
                 "Tu me prends pour un singe?",
                 "J aime pas du tout",
-                "Meilleur fruit de la galaxie"
+                "Trop bon"
             ]
         },
         {
             "questionType": "choice",
             "questionText": "Comment trouve tu Mario Wonder ?",
             "choices": [
-                "Trop facile",
+                "Normal",
                 "Trop dur",
                 "J aime le challenge",
-                "Avec de la perseverance on y  arrive"
+                "Ez"
             ]
         },
         {
             "questionType": "choice",
-            "questionText": "Êtes-vous un homme, une femme ou autre ?",
+            "questionText": "Va t on avoir une bonne note ?",
             "choices": [
-                "Je suis un homme",
-                "Je suis une femme",
-                "Autre"
+                "Vous méritez un 20",
+                "Nul à chier",
+                "Bof mais ça mérite un 10",
+                "Bon travail, je vous donne un 15"
             ]
         },
         {
