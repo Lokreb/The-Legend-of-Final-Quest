@@ -1,0 +1,34 @@
+{
+    "questions": [
+        {
+            "questionType": "choice",
+            "questionText": "Êtes-vous un homme, une femme ou autre ?",
+            "choices": [
+                "Je suis un homme",
+                "Je suis une femme",
+                "Autre"
+            ]
+        },
+        {
+            "questionType": "multiple-choice",
+            "questionText": "Quelles couleurs préférez-vous ?",
+            "choices": [
+                "Rouge",
+                "Bleu",
+                "Vert",
+                "Jaune",
+                "Autre"
+            ]
+        },
+        {
+            "questionType": "free-text",
+            "questionText": "Donnez votre avis sur ce questionnaire :"
+        },
+        {
+            "questionType": "scale",
+            "questionText": "Sur une échelle de 1 à 10, quelle note donneriez-vous à ce questionnaire ?",
+            "minValue": 1,
+            "maxValue": 10
+        }
+    ]
+}
