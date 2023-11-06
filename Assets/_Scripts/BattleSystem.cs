@@ -117,16 +117,16 @@ public BattleState state;
                 PlayerTurn();
             }
         }
-
+        //Aodhan was here
         void EndBattle()
         {
             if (state == BattleState.WON)
             {
-                Debug.Log("tu a gagner");
+                Debug.Log("tu as gagner");
             }
             else if (state == BattleState.LOST)
             {
-                Debug.Log("tu a perdu");
+                Debug.Log("tu as perdu");
             } 
 
         }
