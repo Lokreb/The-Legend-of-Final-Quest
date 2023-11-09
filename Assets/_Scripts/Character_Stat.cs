@@ -14,7 +14,7 @@ public class Character_Stat : MonoBehaviour
     public int FinalDammage;
     SpriteRenderer spriteRenderer;
     public int dammagetaken;
-
+    public int NBHeal = 3;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -31,7 +31,7 @@ public class Character_Stat : MonoBehaviour
         {
             spriteRenderer.sprite = sprites[2];
         }
-        level = 1;
+        
         damage = 10;
         maxHealth = 100;
         currentHealth = maxHealth;
@@ -52,6 +52,20 @@ public class Character_Stat : MonoBehaviour
             return true;
         }
         else { return false; }
+    }
+
+    public void heal()
+    {
+        if(currentHealth < maxHealth && NBHeal > 0)
+        {
+            currentHealth = maxHealth;
+            NBHeal--;
+        }
+        
+        
+            
+        
+        
     }
 }
     

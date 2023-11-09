@@ -13,7 +13,7 @@ public class Question
     public List<string> choices;
     public int minValue;
     public int maxValue;
-   
+    
 }
 
 [System.Serializable]
@@ -30,7 +30,7 @@ public class QuestionManager : MonoBehaviour
     public int NbQuestion;
     private QuestionData questionData;
     private int currentQuestionIndex;
-
+    public bool Repondu = false;
     void Start()
     {
         LoadQuestionsFromJSON(); // Charger les questions depuis le fichier JSON
@@ -101,6 +101,7 @@ public class QuestionManager : MonoBehaviour
     public void NextQuestion()
     {
         currentQuestionIndex++;
+        Repondu = true;
         DisplayQuestion(currentQuestionIndex);
     }
 }

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class Enemy_stat : MonoBehaviour
     public int damage;
     public int TrueDammage;
     public int currentPart;
+    public int weakness = 1;
 
     void Start()
     {
@@ -19,6 +21,7 @@ public class Enemy_stat : MonoBehaviour
         currentHealth = MaxHealth;
         TrueDammage = 10;
         damage = 10 * 2 ^ currentPart * 20;
+        
     }
 
     public void initiallisationHP()

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,15 +15,21 @@ public BattleState state;
     public GameObject enemyPrefab;
     public GameObject QuestionManagerGO;
     public Button[] questionBouton;
+    public Button[] ActionButton;
     public bool isPlayerTurn;
      public TMP_Text lvl;
      public TMP_Text Enemyname;
-     public Slider EnemyHPBar;
+    public TMP_Text Nbheal;
+    public Slider EnemyHPBar;
      public Slider PlayerHPBar;
-
-
+    public Button[] AttakButton;
+    public int AttakType;
+    public GameObject QuestionPanel;
+    public GameObject ActionPanel;
+    public GameObject AttaquePanel;
     public Enemy_stat enemy_unit;
     public Character_Stat player_unit;
+   // public bool Repondu = false;
         void Start()
     {
         state = BattleState.START;
@@ -31,19 +38,22 @@ public BattleState state;
 
     private void Update()
     {
+
         if(state == BattleState.PLAYERTURN)
         {
-            foreach(Button bouton in questionBouton)
+            foreach(Button bouton in ActionButton)
             {
                 bouton.interactable = true;
             }
-        } else
+        }
+        else if(state != BattleState.PLAYERTURN)
         {
-            foreach (Button bouton in questionBouton)
+            foreach (Button bouton in ActionButton)
             {
                 bouton.interactable = false;
             }
         }
+        Nbheal.text = "Restant : " + player_unit.NBHeal.ToString();
 
     }
 
@@ -56,20 +66,24 @@ public BattleState state;
          enemy_unit = EnemyGO.GetComponent<Enemy_stat>();
         Enemyname.text = "" + enemy_unit.enemyName;
         lvl.text = ""+ player_unit.level.ToString();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         enemy_unit.NBQuestion = QuestionManagerGO.GetComponent<QuestionManager>().NbQuestion;
         enemy_unit.initiallisationHP();
         EnemyHPBar.maxValue = enemy_unit.MaxHealth;
         PlayerHPBar.maxValue = player_unit.maxHealth;
-
-        
+        player_unit.NBHeal = 3;
+        enemy_unit.weakness = Random.Range(1, 4);
+        QuestionPanel.SetActive(false);
         state = BattleState.PLAYERTURN;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         PlayerTurn();
     }
 
     void PlayerTurn()
     {
+        state = BattleState.PLAYERTURN;
+        ActionPanel.SetActive(true);
+        AttaquePanel.SetActive(false);
         Debug.Log("Player Turn");
     }
 
@@ -78,32 +92,87 @@ public BattleState state;
         if (state != BattleState.PLAYERTURN)
             return;
         state = BattleState.ENEMYTURN;
-        StartCoroutine(PlayerAttack());
+        if(AttakType==5) 
+        { 
+            player_unit.heal();
+          
+        }
+            StartCoroutine(PlayerAttack());
+        
+    }
+
+    public void DefineAttakType1()
+    {
+        AttakType = 1;
+    }
+    public void DefineAttakType2()
+    {
+        AttakType = 2;
+    }
+    public void DefineAttakType3()
+    {
+        AttakType = 3;
+    }
+    public void DefineAttakType4()
+    {
+        AttakType = 4;
+    }
+    public void DefineAttakType5()
+    {
+        AttakType = 5;
     }
 
     IEnumerator PlayerAttack()
     {
-        player_unit.CalculedDammage();
-        bool isdead = enemy_unit.TakeDamage(player_unit.FinalDammage);
-        EnemyHPBar.value = enemy_unit.currentHealth;
-        yield return new WaitForSeconds(2f);
 
-        if(isdead)
+      
+        
+        player_unit.CalculedDammage();
+        if (AttakType != enemy_unit.weakness && AttakType !=5)
         {
-            EndBattle();
-            state = BattleState.WON;
-        }else
+            bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
+            PlayerHPBar.value = player_unit.currentHealth;
+        }
+         if (AttakType != 5) //this is not a heal
         {
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
+            Reponse();
+
+            while (!QuestionManagerGO.GetComponent<QuestionManager>().Repondu)
+            {
+                yield return null; // Attendez la prochaine frame
+            }
+            Reponse();
+            QuestionManagerGO.GetComponent<QuestionManager>().Repondu = false;
+            bool isdead = enemy_unit.TakeDamage(player_unit.FinalDammage);
+            EnemyHPBar.value = enemy_unit.currentHealth;
+            yield return new WaitForSeconds(0.5f);
+            if (isdead)
+            {
+                EndBattle();
+                state = BattleState.WON;
+            }
+            else
+            {
+                state = BattleState.ENEMYTURN;
+                StartCoroutine(EnemyTurn());
+            }
+
+
+
+        }
+        else
+        {
+                state = BattleState.ENEMYTURN;
+                StartCoroutine(EnemyTurn());
+            
         }
         IEnumerator EnemyTurn()
         {
             Debug.Log("tours enemmie");
-            yield return new WaitForSeconds(1f);
-            bool isDead = player_unit.TakeDamage(enemy_unit.damage,enemy_unit.TrueDammage);
+            yield return new WaitForSeconds(0.5f);
+            bool isdead = player_unit.TakeDamage(enemy_unit.damage,enemy_unit.TrueDammage);
             PlayerHPBar.value = player_unit.currentHealth;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
 
             if(isdead)
             {
@@ -123,6 +192,7 @@ public BattleState state;
             if (state == BattleState.WON)
             {
                 Debug.Log("tu as gagner");
+                player_unit.level++;
             }
             else if (state == BattleState.LOST)
             {
@@ -130,9 +200,24 @@ public BattleState state;
             } 
 
         }
-
+        
 
         //chek if question is end
         //change state based on that
+    }
+    public void Reponse()
+    {
+        if(QuestionManagerGO.GetComponent<QuestionManager>().Repondu == false)
+        {
+            AttaquePanel.SetActive(false);
+            QuestionPanel.SetActive(true);
+        }
+        else if (QuestionManagerGO.GetComponent<QuestionManager>().Repondu == true) 
+        {
+            QuestionPanel.SetActive(false);
+            AttaquePanel.SetActive(true);
+        }
+        
+        
     }
 }
