@@ -29,9 +29,11 @@ public BattleState state;
     public GameObject AttaquePanel;
     public Enemy_stat enemy_unit;
     public Character_Stat player_unit;
+    public GameObject EcranDeChargement;
    // public bool Repondu = false;
         void Start()
     {
+        EcranDeChargement.SetActive(true);
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
@@ -66,7 +68,7 @@ public BattleState state;
          enemy_unit = EnemyGO.GetComponent<Enemy_stat>();
         Enemyname.text = "" + enemy_unit.enemyName;
         lvl.text = ""+ player_unit.level.ToString();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         enemy_unit.NBQuestion = QuestionManagerGO.GetComponent<QuestionManager>().NbQuestion;
         enemy_unit.initiallisationHP();
         EnemyHPBar.maxValue = enemy_unit.MaxHealth;
@@ -75,7 +77,8 @@ public BattleState state;
         enemy_unit.weakness = Random.Range(1, 4);
         QuestionPanel.SetActive(false);
         state = BattleState.PLAYERTURN;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
+        EcranDeChargement.SetActive(false);
         PlayerTurn();
     }
 
@@ -193,6 +196,7 @@ public BattleState state;
             {
                 Debug.Log("tu as gagner");
                 player_unit.level++;
+                EcranDeChargement.SetActive(true);
             }
             else if (state == BattleState.LOST)
             {
