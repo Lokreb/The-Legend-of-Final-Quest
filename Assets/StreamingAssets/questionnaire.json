@@ -1,65 +1,173 @@
 {
-    "questions": [
+    "parties": [
         {
-            "questionType": "choice",
-            "questionText": "Êtes-vous un homme, une femme ou autre ?",
-            "choices": [
-                "Je suis un homme",
-                "Je suis une femme",
-                "Autre",
-                ""
+            "partie": 1,
+            "partieNom": "Questions à choix simple",
+            "questions": [
+                {
+                    "questionType": "choice",
+                    "questionText": "Êtes-vous un homme, une femme ou autre ?",
+                    "choices": [
+                        "Je suis un homme",
+                        "Je suis une femme",
+                        "Autre",
+                        ""
+                    ]
+                },
+                {
+                    "questionType": "choice",
+                    "questionText": "Aimez vous les bananes ?",
+                    "choices": [
+                        "J'en mange tous les jours",
+                        "Tu me prends pour un singe?",
+                        "Je n'aime pas du tout",
+                        "Trop bon"
+                    ]
+                },
+                {
+                    "questionType": "choice",
+                    "questionText": "Comment trouves-tu Mario Wonder ?",
+                    "choices": [
+                        "Normal",
+                        "Trop dur",
+                        "J'aime le challenge",
+                        "Ez"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "choice",
+                    "questionText": "Êtes vous un gros dépenseur sur les gachas ?",
+                    "choices": [
+                        "Je dépense environ 50 euros par mois",
+                        "Je ne dépense aucun sous dedans",
+                        "Je dépense plus de 100 euros par mois",
+                        "Je dépense plus de 300 euros par mois"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "choice",
+                    "questionText": "Aimez vous les MMORPG ?",
+                    "choices": [
+                        "Ce n'est pas mon style de jeu",
+                        "Je passe mon temps dessus",
+                        "J'aime y jouer de temps en temps mais je ne suis pas fan",
+                        "Bof"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "choice",
+                    "questionText": "Avez vous déjà rencontré une forme de toxicité quelconque dans un jeu ?",
+                    "choices": [
+                        "Oui, tout les jours",
+                        "De temps en temps",
+                        "Jamais",
+                        "Très rarement"
+                    ]
+                }
             ]
         },
         {
-            "questionType": "choice",
-            "questionText": "Aimez vous les bananes ?",
-            "choices": [
-                "J en mange tout les jours",
-                "Tu me prends pour un singe?",
-                "J aime pas du tout",
-                "Trop bon"
+            "partie": 2,
+            "partieNom": "Questions sur les choix multiples",
+            "questions": [
+                {
+                    "questionType": "multiple-choice",
+                    "questionText": "Quelles couleurs préférez-vous ?",
+                    "choices": [
+                        "Rouge",
+                        "Bleu",
+                        "Vert",
+                        "Jaune"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "multiple-choice",
+                    "questionText": "Quelles types de jeux préférez vous ?",
+                    "choices": [
+                        "MMORPG",
+                        "gacha",
+                        "MOBA",
+                        "FPS"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "multiple-choice",
+                    "questionText": "A quels gacha jouez vous ?",
+                    "choices": [
+                        "Genshin Impact",
+                        "Honkai : Star rail",
+                        "Summoners War",
+                        "Fire emblem heroes"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "multiple-choice",
+                    "questionText": "Sentez vous une isolation sociale pendant le covid ?",
+                    "choices": [
+                        "Oui",
+                        "Non",
+                        "Un peu",
+                        "Beaucoup"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "multiple-choice",
+                    "questionText": "Avez vous une addiction aux jeux d'argent ?",
+                    "choices": [
+                        "Oui",
+                        "Pas vraiment",
+                        "Non",
+                        "Je ne vois pas de quoi vous parlez"
+                    ]
+                }
             ]
         },
         {
-            "questionType": "choice",
-            "questionText": "Comment trouve tu Mario Wonder ?",
-            "choices": [
-                "Normal",
-                "Trop dur",
-                "J aime le challenge",
-                "Ez"
+            "partie": 3,
+            "partieNom": "Questions de type échelle",
+            "questions": [
+                {
+                    "questionType": "scale",
+                    "questionText": "Sur une échelle de 1 à 10, quelle note donneriez-vous à ce questionnaire ?",
+                    "minValue": 1,
+                    "maxValue": 10
+                }
+                ,
+                {
+                    "questionType": "free-text",
+                    "questionText": "Donnez votre avis sur ce questionnaire :",
+                    "choices": "blabliblibloublou"
+                }
+                ,
+                {
+                    "questionType": "choice",
+                    "questionText": "Comment ça va ?",
+                    "choices": [
+                        "Mal",
+                        "Très mal",
+                        "Très très mal",
+                        "Ca va bieng"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "choice",
+                    "questionText": "Comment trouvez vous ce boss ?",
+                    "choices": [
+                        "Aïe mes yeux",
+                        "Ca brille",
+                        "Eblouissant",
+                        "Magnifique"
+                    ]
+                }
             ]
-        },
-        {
-            "questionType": "choice",
-            "questionText": "Va t on avoir une bonne note ?",
-            "choices": [
-                "Vous méritez un 20",
-                "Nul à chier",
-                "Bof mais ça mérite un 10",
-                "Bon travail, je vous donne un 15"
-            ]
-        },
-        {
-            "questionType": "multiple-choice",
-            "questionText": "Quelles couleurs préférez-vous ?",
-            "choices": [
-                "Rouge",
-                "Bleu",
-                "Vert",
-                "Jaune"
-            ]
-        },
-        {
-            "questionType": "free-text",
-            "questionText": "Donnez votre avis sur ce questionnaire :"
-        },
-        {
-            "questionType": "scale",
-            "questionText": "Sur une échelle de 1 à 10, quelle note donneriez-vous à ce questionnaire ?",
-            "minValue": 1,
-            "maxValue": 10
         }
     ]
-
 }
