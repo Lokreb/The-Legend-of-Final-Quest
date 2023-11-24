@@ -147,6 +147,7 @@ MonoBehaviour:
   onCollisionEnter2D:
     m_PersistentCalls:
       m_Calls: []
+  LevelToLoad: SceneV3Q1
 --- !u!50 &6332335376938144876
 Rigidbody2D:
   serializedVersion: 4

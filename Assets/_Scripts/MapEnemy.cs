@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class MapEnemy : MonoBehaviour
 {
@@ -18,9 +19,13 @@ public class MapEnemy : MonoBehaviour
 
     }
     public UnityEvent onCollisionEnter2D; // Créez cet événement dans l'inspecteur Unity.
+    public string LevelToLoad;
 
+    void LoadLevel()
+    {
+        SceneManager.LoadScene(LevelToLoad);
+    }
 
-    
     // Cette fonction est appelée lorsqu'il y a une collision
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -31,7 +36,7 @@ public class MapEnemy : MonoBehaviour
             Debug.Log("ça marche");
             onCollisionEnter2D.Invoke(); // Déclenche l'événement Unity.
             Destroy(gameObject);
-            //changer de scene
+            LoadLevel();
         }
         // Vous pouvez ajouter ici le code pour réagir à la collision.
     }

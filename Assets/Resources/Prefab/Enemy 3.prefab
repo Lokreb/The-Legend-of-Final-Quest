@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4745673436781120028}
   - component: {fileID: 8903225139792299765}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2e33da2d251c16e439b8c310336ed63c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.13207549, g: 0.03800285, b: 0.03800285, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,10 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86437246cc4089e498ccc6ce68cb788f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Tas de Slime
+  enemyName: demon
   MaxHealth: 5
   currentHealth: 5
   NBQuestion: 5
   damage: 40
   TrueDammage: 5
   currentPart: 1
+  weakness: 1

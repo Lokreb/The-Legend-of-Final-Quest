@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -12,7 +13,7 @@ public class BattleSystem : MonoBehaviour
 {
 public BattleState state;
     public GameObject playerPrefab;
-    public GameObject enemyPrefab;
+    public GameObject [] enemyPrefab;
     public GameObject QuestionManagerGO;
     public Button[] questionBouton;
     public Button[] ActionButton;
@@ -30,8 +31,10 @@ public BattleState state;
     public Enemy_stat enemy_unit;
     public Character_Stat player_unit;
     public GameObject EcranDeChargement;
-   // public bool Repondu = false;
-        void Start()
+    public string LevelToLoad;
+    // public bool Repondu = false;
+    public WhereIamI Wii;
+    void Start()
     {
         EcranDeChargement.SetActive(true);
         state = BattleState.START;
@@ -61,10 +64,12 @@ public BattleState state;
 
     IEnumerator SetupBattle()
     {
+
+        
         QuestionManagerGO.GetComponent<QuestionManager>();
          GameObject PlayerGO = Instantiate(playerPrefab);
         player_unit =  PlayerGO.GetComponent<Character_Stat>();
-         GameObject EnemyGO = Instantiate(enemyPrefab);
+         GameObject EnemyGO = Instantiate(enemyPrefab[Wii.CounterOfBoss]);
          enemy_unit = EnemyGO.GetComponent<Enemy_stat>();
         Enemyname.text = "" + enemy_unit.enemyName;
         lvl.text = ""+ player_unit.level.ToString();
@@ -196,7 +201,9 @@ public BattleState state;
             {
                 Debug.Log("tu as gagner");
                 player_unit.level++;
+                Wii.CounterOfBoss++;
                 EcranDeChargement.SetActive(true);
+                LoadLevel();
             }
             else if (state == BattleState.LOST)
             {
@@ -204,7 +211,11 @@ public BattleState state;
             } 
 
         }
-        
+        void LoadLevel()
+        {
+            SceneManager.LoadScene(LevelToLoad);
+        }
+
 
         //chek if question is end
         //change state based on that
