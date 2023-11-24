@@ -37,8 +37,11 @@ public class Enemy_stat : MonoBehaviour
         //affichage de faux dommage 
         if (currentHealth <= 0)
         {
+            Debug.Log("mort");
             return true;
         }
-        else { return false; }
+        else {
+            Debug.Log("pas mort"); 
+            return false; }
     }
 }

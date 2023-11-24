@@ -156,8 +156,9 @@ public BattleState state;
             yield return new WaitForSeconds(0.5f);
             if (isdead)
             {
-                EndBattle();
                 state = BattleState.WON;
+                EndBattle();
+                
             }
             else
             {
