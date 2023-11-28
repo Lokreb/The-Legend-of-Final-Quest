@@ -6,20 +6,28 @@ using UnityEngine.UI;
 using System.IO;
 
 [System.Serializable]
+public class Parties
+{
+    public QuestionPartie[] parties;
+    
+}
+[System.Serializable]
+public class QuestionPartie
+{
+    public int partie;
+    public string partieNom;
+    public Question[] questions;
+}
+
+[System.Serializable]
 public class Question
 {
     public string questionType;
     public string questionText;
-    public List<string> choices;
+    public string[] choices;
     public int minValue;
     public int maxValue;
     
-}
-
-[System.Serializable]
-public class QuestionData
-{
-    public List<Question> questions;
 }
 
 public class QuestionManager : MonoBehaviour
@@ -28,80 +36,71 @@ public class QuestionManager : MonoBehaviour
     public TMP_Text[] answerTexts;
     public GameObject questionPanel;
     public int NbQuestion;
-    private QuestionData questionData;
+    private Parties questionData;
     private int currentQuestionIndex;
+     private int currentPartieIndex;
     public bool Repondu = false;
     void Start()
     {
-        LoadQuestionsFromJSON(); // Charger les questions depuis le fichier JSON
+        LoadQuestionsFromJSON();
         currentQuestionIndex = 0;
-        NbQuestion = questionData.questions.Count;
-        
-        DisplayQuestion(currentQuestionIndex); // Afficher la première question
+        currentPartieIndex = 0;
+        NbQuestion = questionData.parties[currentPartieIndex].questions.Length;
+        Debug.Log(NbQuestion);
+
+        DisplayQuestion(currentQuestionIndex);
     }
 
     void LoadQuestionsFromJSON()
     {
         string jsonPath = "Assets/StreamingAssets/questionnaire.json"; // Chemin vers le fichier JSON
         string json = File.ReadAllText(jsonPath);
-
-        questionData = JsonUtility.FromJson<QuestionData>(json);
+        questionData = JsonUtility.FromJson<Parties>(json);
     }
 
-    void DisplayQuestion(int questionIndex)
+    void DisplayQuestion(int index)
     {
-        if (questionIndex < questionData.questions.Count)
+        // Afficher la question et ses rÃ©ponses en fonction de l'index actuel et de la partie actuelle
+        questionText.text = questionData.parties[currentPartieIndex].questions[index].questionText;
+
+        for (int i = 0; i < answerTexts.Length; i++)
         {
-            Question currentQuestion = questionData.questions[questionIndex];
-
-            questionText.text = currentQuestion.questionText;
-
-            if (currentQuestion.questionType == "choice" || currentQuestion.questionType == "multiple-choice")
+            // VÃ©rifier si la rÃ©ponse existe pour l'index donnÃ© dans le tableau de rÃ©ponses
+            if (i < questionData.parties[currentPartieIndex].questions[index].choices.Length)
             {
-                for (int i = 0; i < answerTexts.Length; i++)
-                {
-                    if (i < currentQuestion.choices.Count)
-                    {
-                        answerTexts[i].text = currentQuestion.choices[i];
-                        answerTexts[i].gameObject.SetActive(true);
-                    }
-                    else
-                    {
-                        answerTexts[i].gameObject.SetActive(false);
-                    }
-                }
-            }
-            else if (currentQuestion.questionType == "scale")
-            {
-                // Afficher une échelle, par exemple, de 1 à 10
-                for (int i = 0; i < answerTexts.Length; i++)
-                {
-                    answerTexts[i].text = (currentQuestion.minValue + i).ToString();
-                    answerTexts[i].gameObject.SetActive(true);
-                }
+                answerTexts[i].text = questionData.parties[currentPartieIndex].questions[index].choices[i];
             }
             else
             {
-                // Cacher les réponses si c'est une question à réponse libre
-                for (int i = 0; i < answerTexts.Length; i++)
-                {
-                    answerTexts[i].gameObject.SetActive(false);
-                }
+                // Si on a dÃ©passÃ© le nombre de rÃ©ponses disponibles, cacher le texte de rÃ©ponse
+                answerTexts[i].gameObject.SetActive(false);
             }
-
-            questionPanel.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("Toutes les questions ont été posées.");
-            questionPanel.SetActive(false);
         }
     }
+
 
     public void NextQuestion()
     {
         currentQuestionIndex++;
         Repondu = true;
+
+        if (currentQuestionIndex >= NbQuestion)
+        {
+            // Si on a rÃ©pondu Ã  toutes les questions de la partie actuelle, passer Ã  la partie suivante
+            currentPartieIndex++;
+            if (currentPartieIndex < questionData.parties.Length)
+            {
+                currentQuestionIndex = 0;
+                NbQuestion = questionData.parties[currentPartieIndex].questions.Length;
+            }
+            else
+            {
+                // Si on a fini toutes les parties, peut-Ãªtre afficher un message ou faire quelque chose d'autre
+                Debug.Log("Fin du questionnaire !");
+                return;
+            }
+        }
+
         DisplayQuestion(currentQuestionIndex);
     }
 }
