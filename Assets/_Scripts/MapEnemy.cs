@@ -7,37 +7,40 @@ using UnityEngine.SceneManagement;
 
 public class MapEnemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    public UnityEvent onCollisionEnter2D; // Créez cet événement dans l'inspecteur Unity.
+    Vector3 savedPlayerPosition;
+    public int whoAmI = 0;
+    private QuestionManager QM;
+    private int indexPartie;
+    public UnityEvent onCollisionEnter2D; // Crï¿½ez cet ï¿½vï¿½nement dans l'inspecteur Unity.
     public string LevelToLoad;
+
+
+    private void Start()
+    {
+        if(QM.currentPartieIndex > whoAmI) {
+            Destroy(gameObject);
+        }
+    }
 
     void LoadLevel()
     {
+        
         SceneManager.LoadScene(LevelToLoad);
     }
 
-    // Cette fonction est appelée lorsqu'il y a une collision
+    // Cette fonction est appelï¿½e lorsqu'il y a une collision
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision détectée avec : " + other.gameObject.name);
-       
+        Debug.Log("Collision dï¿½tectï¿½e avec : " + other.gameObject.name);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameManager.savedPlayerPosition = player.transform.position; // Sauvegarde la position du joueur dans GameManager
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("ça marche");
-            onCollisionEnter2D.Invoke(); // Déclenche l'événement Unity.
+            Debug.Log("ï¿½a marche");
+            onCollisionEnter2D.Invoke(); // Dï¿½clenche l'ï¿½vï¿½nement Unity.
             Destroy(gameObject);
             LoadLevel();
         }
-        // Vous pouvez ajouter ici le code pour réagir à la collision.
+        // Vous pouvez ajouter ici le code pour rï¿½agir ï¿½ la collision.
     }
 }

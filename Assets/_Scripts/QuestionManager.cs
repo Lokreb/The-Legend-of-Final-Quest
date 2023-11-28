@@ -38,7 +38,7 @@ public class QuestionManager : MonoBehaviour
     public int NbQuestion;
     private Parties questionData;
     private int currentQuestionIndex;
-     private int currentPartieIndex;
+    public int currentPartieIndex;
     public bool Repondu = false;
     void Start()
     {
