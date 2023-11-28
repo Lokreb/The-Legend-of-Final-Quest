@@ -13,10 +13,11 @@ public class Enemy_stat : MonoBehaviour
     public int TrueDammage;
     public int currentPart;
     public int weakness = 1;
+    Animator animator;
 
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
         MaxHealth = NBQuestion;
         currentHealth = MaxHealth;
         TrueDammage = 10;
@@ -30,6 +31,12 @@ public class Enemy_stat : MonoBehaviour
         currentHealth = MaxHealth;
     }
 
+    public void Hit()
+    {
+     
+        animator.SetFloat("isAttak", 1);
+        animator.SetFloat("isAttak", 0);
+    }
     public bool TakeDamage(int dammage)
     {
 
@@ -41,7 +48,9 @@ public class Enemy_stat : MonoBehaviour
             return true;
         }
         else {
-            Debug.Log("pas mort"); 
+            animator.SetFloat("isTanking", 1);
+            Debug.Log("pas mort");
+            animator.SetFloat("isTanking", 0);
             return false; }
     }
 }

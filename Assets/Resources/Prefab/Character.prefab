@@ -107,6 +107,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f5b1dc2565e271141a664eb29b41efa8, type: 3}
   - {fileID: 21300000, guid: 76f91f9f4ec799d45b5a3cf5ea0e780d, type: 3}
   - {fileID: 21300000, guid: 1c3412c31a155b84f8c2eb3e47a65f89, type: 3}
+  Controllers:
+  - {fileID: 9100000, guid: 35f1c4c7cf148da429e8f74802fee908, type: 2}
+  - {fileID: 9100000, guid: cd9d55eac11e5f745a2a8a10dc2681bf, type: 2}
+  - {fileID: 9100000, guid: d52add87813dfaa4aba190c65a34fcee, type: 2}
   FinalDammage: 50
   dammagetaken: 0
   NBHeal: 3
