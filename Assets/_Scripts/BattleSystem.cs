@@ -139,6 +139,7 @@ public BattleState state;
         if (AttakType != enemy_unit.weakness && AttakType !=5)
         {
             bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
+            enemy_unit.Hit();
             PlayerHPBar.value = player_unit.currentHealth;
         }
          if (AttakType != 5) //this is not a heal
@@ -180,6 +181,7 @@ public BattleState state;
             Debug.Log("tours enemmie");
             yield return new WaitForSeconds(0.5f);
             bool isdead = player_unit.TakeDamage(enemy_unit.damage,enemy_unit.TrueDammage);
+            enemy_unit.Hit();
             PlayerHPBar.value = player_unit.currentHealth;
             yield return new WaitForSeconds(0.5f);
 
