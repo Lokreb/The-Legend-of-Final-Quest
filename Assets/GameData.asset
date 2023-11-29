@@ -15,3 +15,4 @@ MonoBehaviour:
   savedPartieIndex: 0
   savedQuestionIndex: 0
   nbBoss: 0
+  gender: 2

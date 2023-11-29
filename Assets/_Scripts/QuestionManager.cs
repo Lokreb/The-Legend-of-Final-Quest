@@ -52,6 +52,9 @@ public class QuestionManager : MonoBehaviour
         DisplayQuestion(currentQuestionIndex);
     }
 
+    void Update() {
+    }
+
     void LoadQuestionsFromJSON()
     {
         string jsonPath = "Assets/StreamingAssets/questionnaire.json"; // Chemin vers le fichier JSON

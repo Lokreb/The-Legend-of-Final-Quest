@@ -10,12 +10,20 @@ public class GameManager : MonoBehaviour
     public int partie;
     public int question;
     public int boss;
+    public int gender;
     public static Vector3 savedPlayerPosition;
+    private static bool isGMcreated = false;
 
     int worldSceneIndex = 1;
     // Start is called before the first frame update
     void Awake()
     {
+        if(!isGMcreated) {
+            DontDestroyOnLoad(gameObject);
+            isGMcreated = true;
+        } else {
+            Destroy(gameObject);
+        }
         partie = gameData.savedPartieIndex;
         question = gameData.savedQuestionIndex;
         boss = gameData.nbBoss;
@@ -33,6 +41,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Start() {
+        gameData.ResetData();
+    }
     public void SavePartie(int part) {
         gameData.savedPartieIndex = part;
     }
@@ -44,4 +55,10 @@ public class GameManager : MonoBehaviour
     public void SaveBoss(int numBoss) {
         gameData.nbBoss = numBoss;
     }
+
+    public void SaveGender(int gend) {
+        gameData.gender = gend;
+    }
+
+
 }

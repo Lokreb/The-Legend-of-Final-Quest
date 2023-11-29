@@ -20,6 +20,7 @@ public class Character_Stat : MonoBehaviour
     public int NBHeal = 3;
     int genderNB = 0;
     Animator animator;
+    public GameManager _GM;
     void Start()
     {
         animator = GetComponent<Animator>();

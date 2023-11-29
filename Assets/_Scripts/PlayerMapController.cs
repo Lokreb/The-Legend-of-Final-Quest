@@ -12,6 +12,7 @@ public class PlayerMapController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     public LayerMask Walkable;
+    public GameManager _GM;
     public int gender = 0;
     private void Start()
     {
@@ -26,7 +27,7 @@ public class PlayerMapController : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        // Créez un vecteur de mouvement à partir des entrées du joueur.
+        // Crï¿½ez un vecteur de mouvement ï¿½ partir des entrï¿½es du joueur.
         Vector2 movement = new Vector2(horizontal, vertical).normalized;
 
 
@@ -39,7 +40,7 @@ public class PlayerMapController : MonoBehaviour
         // Calculer la position cible.
         Vector2 targetPosition = rb.position + movement * speed * Time.fixedDeltaTime;
 
-        // Vérifier si la position cible est walkable.
+        // Vï¿½rifier si la position cible est walkable.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(targetPosition, 0.2f, Walkable);
 
         animator.SetFloat("X", movement.x);
@@ -47,7 +48,7 @@ public class PlayerMapController : MonoBehaviour
 
         if (colliders.Length > 0)
         {
-            // Si la position cible est walkable, déplacer le personnage.
+            // Si la position cible est walkable, dï¿½placer le personnage.
             rb.MovePosition(targetPosition);
         }
     }
