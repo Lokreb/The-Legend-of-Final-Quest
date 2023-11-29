@@ -12,6 +12,7 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
 {
 public BattleState state;
+    public GameManager GM;
     public GameObject playerPrefab;
     public GameObject [] enemyPrefab;
     public GameObject QuestionManagerGO;
@@ -34,6 +35,7 @@ public BattleState state;
     public string LevelToLoad;
     // public bool Repondu = false;
     public WhereIamI Wii;
+    public QuestionManager _QM;
     void Start()
     {
         EcranDeChargement.SetActive(true);
@@ -72,6 +74,7 @@ public BattleState state;
          GameObject EnemyGO = Instantiate(enemyPrefab[Wii.CounterOfBoss]);
          enemy_unit = EnemyGO.GetComponent<Enemy_stat>();
         Enemyname.text = "" + enemy_unit.enemyName;
+        player_unit.level = GM.partie + 1;
         lvl.text = ""+ player_unit.level.ToString();
         yield return new WaitForSeconds(1f);
         enemy_unit.NBQuestion = QuestionManagerGO.GetComponent<QuestionManager>().NbQuestion;
@@ -205,6 +208,8 @@ public BattleState state;
                 Debug.Log("tu as gagner");
                 player_unit.level++;
                 Wii.CounterOfBoss++;
+                Debug.Log("Je sauvegarde : " + QuestionManagerGO.GetComponent<QuestionManager>().currentPartieIndex);
+                GM.SaveBoss(Wii.CounterOfBoss);
                 EcranDeChargement.SetActive(true);
                 LoadLevel();
             }
@@ -223,6 +228,7 @@ public BattleState state;
         //chek if question is end
         //change state based on that
     }
+
     public void Reponse()
     {
         if(QuestionManagerGO.GetComponent<QuestionManager>().Repondu == false)

@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class WhereIamI : MonoBehaviour
 {
+
+    public GameManager _GM;
     // Start is called before the first frame update
     void Start()
     {
+        CounterOfBoss = _GM.boss;
+        Debug.Log("Je vaut : " + _GM.boss);
         if (CounterOfBoss == 0)
         {
             foreach (GameObject background in ListOfBck)
@@ -38,6 +42,6 @@ public class WhereIamI : MonoBehaviour
     {
         
     }
-    public int CounterOfBoss =0;
+    public int CounterOfBoss;
     public GameObject[] ListOfBck;
 }

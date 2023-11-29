@@ -37,14 +37,15 @@ public class QuestionManager : MonoBehaviour
     public GameObject questionPanel;
     public int NbQuestion;
     private Parties questionData;
-    private int currentQuestionIndex;
+    public int currentQuestionIndex;
     public int currentPartieIndex;
     public bool Repondu = false;
+    public GameManager _GM;
     void Start()
     {
         LoadQuestionsFromJSON();
         currentQuestionIndex = 0;
-        currentPartieIndex = 0;
+        currentPartieIndex = _GM.partie;
         NbQuestion = questionData.parties[currentPartieIndex].questions.Length;
         Debug.Log(NbQuestion);
 
@@ -58,7 +59,7 @@ public class QuestionManager : MonoBehaviour
         questionData = JsonUtility.FromJson<Parties>(json);
     }
 
-    void DisplayQuestion(int index)
+    public void DisplayQuestion(int index)
     {
         // Afficher la question et ses réponses en fonction de l'index actuel et de la partie actuelle
         questionText.text = questionData.parties[currentPartieIndex].questions[index].questionText;
@@ -83,11 +84,13 @@ public class QuestionManager : MonoBehaviour
     {
         currentQuestionIndex++;
         Repondu = true;
+        Debug.Log("Je suis a la question : " + currentQuestionIndex);
 
         if (currentQuestionIndex >= NbQuestion)
         {
             // Si on a répondu à toutes les questions de la partie actuelle, passer à la partie suivante
             currentPartieIndex++;
+            _GM.SavePartie(currentPartieIndex);
             if (currentPartieIndex < questionData.parties.Length)
             {
                 currentQuestionIndex = 0;

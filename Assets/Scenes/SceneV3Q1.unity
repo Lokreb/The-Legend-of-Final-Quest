@@ -3422,6 +3422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924bb5b2ca4422741b48591c31c72e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _GM: {fileID: 1347900953}
   CounterOfBoss: 0
   ListOfBck:
   - {fileID: 164993163}
@@ -5541,6 +5542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  GM: {fileID: 1347900953}
   playerPrefab: {fileID: 6163404627947567600, guid: 3cd8c64793a1cf24b9ffac1274435dc1, type: 3}
   enemyPrefab:
   - {fileID: 8411087560177983591, guid: d98d7f56ef56b1940acf98a4c38d7d7f, type: 3}
@@ -5571,6 +5573,7 @@ MonoBehaviour:
   EcranDeChargement: {fileID: 80949670}
   LevelToLoad: Map
   Wii: {fileID: 803783681}
+  _QM: {fileID: 2021807005}
 --- !u!4 &1310273015
 Transform:
   m_ObjectHideFlags: 0
@@ -5586,6 +5589,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1347900952
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1270740763230654948, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662718773632381900, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.426124
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662718773632381900, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6282983
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662718773632381900, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.6406176
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662718773632381900, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662718773632381900, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662718773632381900, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662718773632381900, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662718773632381900, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662718773632381900, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662718773632381900, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+--- !u!114 &1347900953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 691131979432195064, guid: 6f4702577c6b2bd44a45cc6121e9714b, type: 3}
+  m_PrefabInstance: {fileID: 1347900952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9590bead54de3064a802fb35ebd677ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1480416073
 GameObject:
   m_ObjectHideFlags: 0
@@ -6801,7 +6872,10 @@ MonoBehaviour:
   - {fileID: 1061140563}
   questionPanel: {fileID: 64135438}
   NbQuestion: 0
+  currentQuestionIndex: 0
+  currentPartieIndex: 0
   Repondu: 0
+  _GM: {fileID: 1347900953}
 --- !u!4 &2021807006
 Transform:
   m_ObjectHideFlags: 0
@@ -7210,6 +7284,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1347900952}
   - {fileID: 2075558513}
   - {fileID: 1310273015}
   - {fileID: 80949674}
