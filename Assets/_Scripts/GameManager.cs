@@ -23,9 +23,13 @@ public class GameManager : MonoBehaviour
         {
             // Charge la position sauvegardée du joueur
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            //player.transform.position = savedPlayerPosition;
-            Vector3 newPosition = new Vector3(savedPlayerPosition.x, savedPlayerPosition.y + 1.0f, savedPlayerPosition.z);
-            player.transform.position = newPosition;
+            if(boss ==1) {
+                Vector3 newPosition = new Vector3(savedPlayerPosition.x, savedPlayerPosition.y + 1.0f, savedPlayerPosition.z);
+                player.transform.position = newPosition;
+            } else if (boss == 2) {
+                Vector3 newPosition = new Vector3(savedPlayerPosition.x + 1.0f, savedPlayerPosition.y, savedPlayerPosition.z);
+                player.transform.position = newPosition;
+            }
         }
     }
 
