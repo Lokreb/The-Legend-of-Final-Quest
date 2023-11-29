@@ -15,7 +15,7 @@ public class MapEnemy : MonoBehaviour
     public string LevelToLoad;
 
 
-    private void Start()
+    void Start()
     {
         if(QM.currentPartieIndex > whoAmI) {
             Destroy(gameObject);
