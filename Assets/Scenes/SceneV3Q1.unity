@@ -1862,7 +1862,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "R\xE9ponse 2"
+  m_text: Je suis une femme
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
   m_sharedMaterial: {fileID: 1510125769438971578, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
@@ -1889,7 +1889,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.4
+  m_fontSize: 28.4
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2454,7 +2454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "R\xE9ponse 3"
+  m_text: Autre
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
   m_sharedMaterial: {fileID: 1510125769438971578, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
@@ -2481,7 +2481,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.4
+  m_fontSize: 28.4
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3646,7 +3646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ceci est une question
+  m_text: "\xCAtes-vous un homme, une femme ou autre ?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
   m_sharedMaterial: {fileID: 1510125769438971578, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
@@ -3673,7 +3673,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 31.65
   m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4675,7 +4675,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "R\xE9ponse 4"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
   m_sharedMaterial: {fileID: 1510125769438971578, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
@@ -4702,7 +4702,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.4
+  m_fontSize: 15
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5139,7 +5139,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "R\xE9ponse 1"
+  m_text: Je suis un homme
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
   m_sharedMaterial: {fileID: 1510125769438971578, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
@@ -5166,7 +5166,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.4
+  m_fontSize: 28.4
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
