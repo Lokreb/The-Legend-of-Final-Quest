@@ -39,8 +39,15 @@ public class BattleSystem : MonoBehaviour
     void Start()
     {
         EcranDeChargement.SetActive(true);
+        MusicManager musicManager = FindObjectOfType<MusicManager>();
+        if (musicManager != null)
+        {
+            // Utilisez musicManager pour contrôler la musique
+        }
         state = BattleState.START;
         StartCoroutine(SetupBattle());
+            
+       
     }
 
     private void Update()
