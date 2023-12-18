@@ -11,11 +11,13 @@ public class PlayerMapController : MonoBehaviour
     public float speed = 5f;
     private Rigidbody2D rb;
     private Animator animator;
-    public LayerMask Walkable;
+    //public LayerMask Walkable;
     public int gender = 0;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0f;
         animator = GetComponent<Animator>();
         //gender = le bon truc
         this.GetComponent<Animator>().runtimeAnimatorController = ContollerL[gender];
@@ -26,29 +28,30 @@ public class PlayerMapController : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        // Créez un vecteur de mouvement à partir des entrées du joueur.
-        Vector2 movement = new Vector2(horizontal, vertical).normalized;
+        // Crï¿½ez un vecteur de mouvement ï¿½ partir des entrï¿½es du joueur.
+        Vector2 movement = new Vector2(horizontal, vertical);
 
-
-        // Maintenant, utilisez le vecteur de mouvement dans FixedUpdate.
+        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
         MovePlayer(movement);
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            rb.velocity = Vector2.zero;
+            Debug.Log("Collision Mur");
+        }
     }
 
     private void MovePlayer(Vector2 movement)
     {
         // Calculer la position cible.
-        Vector2 targetPosition = rb.position + movement * speed * Time.fixedDeltaTime;
-
-        // Vérifier si la position cible est walkable.
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(targetPosition, 0.2f, Walkable);
+        //Vector2 targetPosition = movement * speed;
 
         animator.SetFloat("X", movement.x);
         animator.SetFloat("Y", movement.y);
-
-        if (colliders.Length > 0)
-        {
-            // Si la position cible est walkable, déplacer le personnage.
-            rb.MovePosition(targetPosition);
-        }
+        //rb.MovePosition(targetPosition);
     }
 }
