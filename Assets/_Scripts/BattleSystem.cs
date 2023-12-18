@@ -11,19 +11,19 @@ using UnityEngine.SceneManagement;
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
 {
-public BattleState state;
+    public BattleState state;
     public GameManager GM;
     public GameObject playerPrefab;
-    public GameObject [] enemyPrefab;
+    public GameObject[] enemyPrefab;
     public GameObject QuestionManagerGO;
     public Button[] questionBouton;
     public Button[] ActionButton;
     public bool isPlayerTurn;
-     public TMP_Text lvl;
-     public TMP_Text Enemyname;
+    public TMP_Text lvl;
+    public TMP_Text Enemyname;
     public TMP_Text Nbheal;
     public Slider EnemyHPBar;
-     public Slider PlayerHPBar;
+    public Slider PlayerHPBar;
     public Button[] AttakButton;
     public int AttakType;
     public GameObject QuestionPanel;
@@ -46,14 +46,14 @@ public BattleState state;
     private void Update()
     {
 
-        if(state == BattleState.PLAYERTURN)
+        if (state == BattleState.PLAYERTURN)
         {
-            foreach(Button bouton in ActionButton)
+            foreach (Button bouton in ActionButton)
             {
                 bouton.interactable = true;
             }
         }
-        else if(state != BattleState.PLAYERTURN)
+        else if (state != BattleState.PLAYERTURN)
         {
             foreach (Button bouton in ActionButton)
             {
@@ -67,15 +67,15 @@ public BattleState state;
     IEnumerator SetupBattle()
     {
 
-        
+
         QuestionManagerGO.GetComponent<QuestionManager>();
-         GameObject PlayerGO = Instantiate(playerPrefab);
-        player_unit =  PlayerGO.GetComponent<Character_Stat>();
-         GameObject EnemyGO = Instantiate(enemyPrefab[Wii.CounterOfBoss]);
-         enemy_unit = EnemyGO.GetComponent<Enemy_stat>();
+        GameObject PlayerGO = Instantiate(playerPrefab);
+        player_unit = PlayerGO.GetComponent<Character_Stat>();
+        GameObject EnemyGO = Instantiate(enemyPrefab[Wii.CounterOfBoss]);
+        enemy_unit = EnemyGO.GetComponent<Enemy_stat>();
         Enemyname.text = "" + enemy_unit.enemyName;
         player_unit.level = GM.partie + 1;
-        lvl.text = ""+ player_unit.level.ToString();
+        lvl.text = "" + player_unit.level.ToString();
         yield return new WaitForSeconds(1f);
         enemy_unit.NBQuestion = QuestionManagerGO.GetComponent<QuestionManager>().NbQuestion;
         enemy_unit.initiallisationHP();
@@ -103,13 +103,13 @@ public BattleState state;
         if (state != BattleState.PLAYERTURN)
             return;
         state = BattleState.ENEMYTURN;
-        if(AttakType==5) 
-        { 
+        if (AttakType == 5)
+        {
             player_unit.heal();
-          
+
         }
-            StartCoroutine(PlayerAttack());
-        
+        StartCoroutine(PlayerAttack());
+
     }
 
     public void DefineAttakType1()
@@ -136,16 +136,16 @@ public BattleState state;
     IEnumerator PlayerAttack()
     {
 
-      
-        
+
+
         player_unit.CalculedDammage();
-        if (AttakType != enemy_unit.weakness && AttakType !=5)
+        if (AttakType != enemy_unit.weakness && AttakType != 5)
         {
             bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
             enemy_unit.Hit();
             PlayerHPBar.value = player_unit.currentHealth;
         }
-         if (AttakType != 5) //this is not a heal
+        if (AttakType != 5) //this is not a heal
         {
             Reponse();
 
@@ -162,7 +162,7 @@ public BattleState state;
             {
                 state = BattleState.WON;
                 EndBattle();
-                
+
             }
             else
             {
@@ -175,22 +175,22 @@ public BattleState state;
         }
         else
         {
-                state = BattleState.ENEMYTURN;
-                StartCoroutine(EnemyTurn());
-            
+            state = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
+
         }
         IEnumerator EnemyTurn()
         {
             Debug.Log("tours enemmie");
             yield return new WaitForSeconds(0.5f);
-            bool isdead = player_unit.TakeDamage(enemy_unit.damage,enemy_unit.TrueDammage);
+            bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
             enemy_unit.Hit();
             PlayerHPBar.value = player_unit.currentHealth;
             yield return new WaitForSeconds(0.5f);
 
-            if(isdead)
+            if (isdead)
             {
-                
+
                 state = BattleState.LOST;
                 EndBattle();
             }
@@ -216,7 +216,7 @@ public BattleState state;
             else if (state == BattleState.LOST)
             {
                 Debug.Log("tu as perdu");
-            } 
+            }
 
         }
         void LoadLevel()
@@ -231,17 +231,17 @@ public BattleState state;
 
     public void Reponse()
     {
-        if(QuestionManagerGO.GetComponent<QuestionManager>().Repondu == false)
+        if (QuestionManagerGO.GetComponent<QuestionManager>().Repondu == false)
         {
             AttaquePanel.SetActive(false);
             QuestionPanel.SetActive(true);
         }
-        else if (QuestionManagerGO.GetComponent<QuestionManager>().Repondu == true) 
+        else if (QuestionManagerGO.GetComponent<QuestionManager>().Repondu == true)
         {
             QuestionPanel.SetActive(false);
             AttaquePanel.SetActive(true);
         }
-        
-        
+
+
     }
 }
