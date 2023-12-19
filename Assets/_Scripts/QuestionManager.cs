@@ -48,12 +48,6 @@ public class QuestionManager : MonoBehaviour
         currentPartieIndex = _GM.partie;
         NbQuestion = questionData.parties[currentPartieIndex].questions.Length;
         Debug.Log(NbQuestion);
-        for (int i = 0; i < answerTexts.Length; i++)
-    {
-        int index = i; // Pour éviter la capture de la boucle dans la lambda
-        answerTexts[i].GetComponent<Button>().onClick.AddListener(() => SelectAnswer(index));
-    }
-
         DisplayQuestion(currentQuestionIndex);
     }
 

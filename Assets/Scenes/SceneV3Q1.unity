@@ -3646,7 +3646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xCAtes-vous un homme, une femme ou autre ?"
+  m_text: "Si cela s'afiche, c'est que \xE7a ne marche pas !!!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
   m_sharedMaterial: {fileID: 1510125769438971578, guid: c23e60ceed09b0545895e4bfecce967e, type: 2}
@@ -3673,7 +3673,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.65
+  m_fontSize: 28.95
   m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 1
