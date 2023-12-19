@@ -34,13 +34,16 @@ public class QuestionManager : MonoBehaviour
 {
     public TMP_Text questionText;
     public TMP_Text[] answerTexts;
-    public GameObject questionPanel;
+    //public GameObject questionPanel;
     public int NbQuestion;
     private Parties questionData;
     public int currentQuestionIndex;
     public int currentPartieIndex;
     public bool Repondu = false;
+    public int questionType;
+    private int sliderValue;
     public GameManager _GM;
+    public SliderScript _sliderScript;
     void Start()
     {
         LoadQuestionsFromJSON();
@@ -65,11 +68,20 @@ public class QuestionManager : MonoBehaviour
 
         for (int i = 0; i < answerTexts.Length; i++)
         {
-            // Vérifier si la réponse existe pour l'index donné dans le tableau de réponses
-            if (i < questionData.parties[currentPartieIndex].questions[index].choices.Length)
-            {
-                answerTexts[i].text = questionData.parties[currentPartieIndex].questions[index].choices[i];
-            }
+                Debug.Log("Je suis de type acier : " + questionData.parties[currentPartieIndex].questions[index].questionType);
+                if(questionData.parties[currentPartieIndex].questions[index].questionType == "choice")
+                {
+                    questionType = 1;
+                    answerTexts[i].text = questionData.parties[currentPartieIndex].questions[index].choices[i];
+                } 
+                else if(questionData.parties[currentPartieIndex].questions[index].questionType == "multiple-choice")
+                {
+                    questionType = 2;
+                }
+                else if (questionData.parties[currentPartieIndex].questions[index].questionType == "scale")
+                {
+                    questionType = 3;
+                }
             else
             {
                 // Si on a dépassé le nombre de réponses disponibles, cacher le texte de réponse
@@ -86,6 +98,17 @@ public class QuestionManager : MonoBehaviour
         Debug.Log("Réponse sélectionnée : " + selectedAnswer);
         Repondu = true;
         NextQuestion();
+        }
+    }
+
+    public void SelectScaleAnswer()
+    {
+        if (!Repondu)
+        {
+            sliderValue = (int)_sliderScript._slider.value;
+            Debug.Log("Réponse sélectionnée (scale) : " + sliderValue);
+            Repondu = true;
+            NextQuestion();
         }
     }
 

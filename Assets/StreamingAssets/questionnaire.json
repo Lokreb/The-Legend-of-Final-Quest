@@ -15,6 +15,12 @@
                     ]
                 },
                 {
+                    "questionType": "scale",
+                    "questionText": "Sur une échelle de 1 à 10, quelle note donneriez-vous à ce questionnaire ?",
+                    "minValue": 1,
+                    "maxValue": 10
+                },
+                {
                     "questionType": "choice",
                     "questionText": "Aimez vous les bananes ?",
                     "choices": [

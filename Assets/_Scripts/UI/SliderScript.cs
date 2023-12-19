@@ -6,19 +6,19 @@ using UnityEngine.UI;
 
 public class SliderScript : MonoBehaviour
 {
-    [SerializeField] private Slider _slider;
+    [SerializeField] public Slider _slider;
 
     [SerializeField] private TextMeshProUGUI _sliderText;
 
-    private const float minValue = 1f;
-    private const float maxValue = 10f;
+    private const int minValue = 1;
+    private const int maxValue = 10;
 
     // Start is called before the first frame update
     void Start()
     {
         _slider.onValueChanged.AddListener((v) =>
         {
-            float clampedValue = Mathf.Clamp(v, minValue, maxValue);
+            int clampedValue = (int)Mathf.Clamp(v, minValue, maxValue);
             _slider.value = clampedValue; // Réajuste la valeur si elle dépasse les limites
             _sliderText.text = clampedValue.ToString("0");
         });
