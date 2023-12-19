@@ -28,6 +28,11 @@ public class MusicManager : MonoBehaviour
         LoadAudioClips();
     }
 
+    public static MusicManager Instance
+    {
+        get { return instance; }
+    }
+
     public void PlayMusic(string clipName) // Modification du paramètre
     {
         if (audioClips.ContainsKey(clipName))
