@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour
 {
@@ -12,17 +11,14 @@ public class DragDrop : MonoBehaviour
     public bool isLocked;
 
     private Dictionary<GameObject, DraggableObject> draggableObjects = new Dictionary<GameObject, DraggableObject>();
-    private GameObject audioSourcesContainer;
     private MusicManager musicManager;
     private Vector3 objectInitPos;
     private Transform originalParent;
-
 
     void Start()
     {
         objectInitPos = objectDrag.transform.position;
         originalParent = objectDrag.transform.parent;
-        audioSourcesContainer = new GameObject("AudioSourcesContainer");
         musicManager = FindObjectOfType<MusicManager>();
         if (musicManager == null)
         {
@@ -30,26 +26,21 @@ public class DragDrop : MonoBehaviour
         }
 
         SyncAudioLoops();
-
     }
 
     void SyncAudioLoops()
     {
-        foreach (var obj in ObjectsDraggable)
+       /* foreach (var obj in ObjectsDraggable)
         {
             DraggableObject draggableObject = obj.GetComponent<DraggableObject>();
             if (draggableObject != null && draggableObject.audioClip != null)
             {
-                draggableObject.audioSource = audioSourcesContainer.AddComponent<AudioSource>();
-                draggableObject.audioSource.clip = draggableObject.audioClip;
-                draggableObject.audioSource.loop = true;
                 draggableObjects[obj] = draggableObject;
             }
-        }
+        }*/
     }
 
-
-        public void DragObject()
+    public void DragObject()
     {
         if (!isLocked)
         {
@@ -78,8 +69,8 @@ public class DragDrop : MonoBehaviour
                     {
                         // Désengager l'enfant du slot
                         child.SetParent(null);
-                        StopMusicForObject(objectDrag);
-                       
+                         StopMusicForObject(objectDrag);
+
                     }
                     else
                     {
@@ -110,29 +101,35 @@ public class DragDrop : MonoBehaviour
                 objectDrag.transform.position = objectInitPos;
                 // Rétablissez le parent d'origine de l'objet
                 objectDrag.transform.SetParent(originalParent);
-               
             }
         }
     }
 
-    void PlayMusicForObject(GameObject obj)
+    void PlayMusicForObject(GameObject objectDrag)
     {
-        DraggableObject draggableObject;
-        if (draggableObjects.TryGetValue(obj, out draggableObject))
+        string clipName = objectDrag.name;
+        if (musicManager != null && musicManager.audioClips.ContainsKey(clipName))
         {
-            musicManager.PlayMusic(draggableObject.audioSource.clip);
+            AudioClip audioClip = musicManager.audioClips[clipName];
+            musicManager.PlayMusic(audioClip.name);
+        }
+        else
+        {
+            Debug.LogWarning("Clip audio not found for object: " + objectDrag.name);
         }
     }
+
 
     void StopMusicForObject(GameObject obj)
     {
-        DraggableObject draggableObject;
-        if (draggableObjects.TryGetValue(obj, out draggableObject))
+        string clipName = obj.name;
+        if (musicManager != null && musicManager.audioClips.ContainsKey(clipName))
         {
-            draggableObject.audioSource.Stop();
-            musicManager.RemoveAudioSource(draggableObject.audioSource);
+            musicManager.StopMusicForAudioClip(musicManager.audioClips[clipName]);
+        }
+        else
+        {
+            Debug.LogWarning("Clip audio not found for object: " + obj.name);
         }
     }
-
-
 }
