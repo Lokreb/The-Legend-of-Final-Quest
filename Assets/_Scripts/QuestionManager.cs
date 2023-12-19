@@ -48,6 +48,11 @@ public class QuestionManager : MonoBehaviour
         currentPartieIndex = _GM.partie;
         NbQuestion = questionData.parties[currentPartieIndex].questions.Length;
         Debug.Log(NbQuestion);
+        for (int i = 0; i < answerTexts.Length; i++)
+    {
+        int index = i; // Pour éviter la capture de la boucle dans la lambda
+        answerTexts[i].GetComponent<Button>().onClick.AddListener(() => SelectAnswer(index));
+    }
 
         DisplayQuestion(currentQuestionIndex);
     }
@@ -79,11 +84,20 @@ public class QuestionManager : MonoBehaviour
         }
     }
 
+    public void SelectAnswer(int answerIndex)
+    {
+        if (!Repondu) // Vérifie si la question a déjà été répondue
+        {
+        string selectedAnswer = questionData.parties[currentPartieIndex].questions[currentQuestionIndex].choices[answerIndex];
+        Debug.Log("Réponse sélectionnée : " + selectedAnswer);
+        Repondu = true;
+        NextQuestion();
+        }
+    }
 
     public void NextQuestion()
     {
         currentQuestionIndex++;
-        Repondu = true;
         Debug.Log("Je suis a la question : " + currentQuestionIndex);
 
         if (currentQuestionIndex >= NbQuestion)
@@ -98,7 +112,6 @@ public class QuestionManager : MonoBehaviour
             }
             else
             {
-                // Si on a fini toutes les parties, peut-être afficher un message ou faire quelque chose d'autre
                 Debug.Log("Fin du questionnaire !");
                 return;
             }
