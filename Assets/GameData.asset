@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e25c5a1a588224b92c7dfe24aafacd, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  savedPartieIndex: 2
+  savedPartieIndex: 0
   savedQuestionIndex: 0
-  nbBoss: 2
+  nbBoss: 0
