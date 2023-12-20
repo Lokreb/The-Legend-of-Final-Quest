@@ -26,7 +26,7 @@ public class BattleSystem : MonoBehaviour
     public Slider PlayerHPBar;
     public Button[] AttakButton;
     public int AttakType;
-    public GameObject QuestionPanel;
+    public GameObject[] QuestionPanel;
     public GameObject ActionPanel;
     public GameObject AttaquePanel;
     public Enemy_stat enemy_unit;
@@ -90,11 +90,19 @@ public class BattleSystem : MonoBehaviour
         PlayerHPBar.maxValue = player_unit.maxHealth;
         player_unit.NBHeal = 3;
         enemy_unit.weakness = Random.Range(1, 4);
-        QuestionPanel.SetActive(false);
+        DisablePanels();
         state = BattleState.PLAYERTURN;
         yield return new WaitForSeconds(1f);
         EcranDeChargement.SetActive(false);
         PlayerTurn();
+    }
+
+    void DisablePanels()
+    {
+        foreach (GameObject qp in QuestionPanel)
+        {
+            qp.SetActive(false);
+        }
     }
 
     void PlayerTurn()
@@ -241,11 +249,26 @@ public class BattleSystem : MonoBehaviour
         if (QuestionManagerGO.GetComponent<QuestionManager>().Repondu == false)
         {
             AttaquePanel.SetActive(false);
-            QuestionPanel.SetActive(true);
+            if(QuestionManagerGO.GetComponent<QuestionManager>().questionType == 1)
+            {
+                QuestionPanel[0].SetActive(true);
+            } 
+            else if (QuestionManagerGO.GetComponent<QuestionManager>().questionType == 2)
+            {
+                QuestionPanel[1].SetActive(true);
+            }
+            else if (QuestionManagerGO.GetComponent<QuestionManager>().questionType == 3)
+            {
+                QuestionPanel[2].SetActive(true);
+            }
         }
         else if (QuestionManagerGO.GetComponent<QuestionManager>().Repondu == true)
         {
-            QuestionPanel.SetActive(false);
+            //QuestionPanel.SetActive(false);
+            for (int i = 0; i < QuestionPanel.Length; i++)
+            {
+                QuestionPanel[i].SetActive(false);
+            }
             AttaquePanel.SetActive(true);
         }
 
