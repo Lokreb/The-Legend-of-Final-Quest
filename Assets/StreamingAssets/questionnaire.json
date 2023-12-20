@@ -147,12 +147,6 @@
                 }
                 ,
                 {
-                    "questionType": "free-text",
-                    "questionText": "Donnez votre avis sur ce questionnaire :",
-                    "choices": "blabliblibloublou"
-                }
-                ,
-                {
                     "questionType": "choice",
                     "questionText": "Comment ça va ?",
                     "choices": [
