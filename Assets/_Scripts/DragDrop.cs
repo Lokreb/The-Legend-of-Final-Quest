@@ -24,7 +24,7 @@ public class DragDrop : MonoBehaviour
         {
             Debug.LogError("MusicManager not found in the scene.");
         }
-
+        MusicManager.MusicStoppedEvent += OnMusicStopped;
         SyncAudioLoops();
     }
 
@@ -38,6 +38,22 @@ public class DragDrop : MonoBehaviour
                 draggableObjects[obj] = draggableObject;
             }
         }*/
+    }
+    void OnMusicStopped(string clipName)
+    {
+        // Arrêtez la lecture de la musique pour l'objet associé au clipName
+        foreach (var obj in draggableObjects.Keys)
+        {
+            DraggableObject draggableObject = draggableObjects[obj];
+            if (draggableObject != null && draggableObject.audioClip != null && draggableObject.audioClip.name == clipName)
+            {
+                AudioSource audioSource = obj.GetComponent<AudioSource>();
+                if (audioSource != null && audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
+            }
+        }
     }
 
     public void DragObject()
@@ -122,14 +138,19 @@ public class DragDrop : MonoBehaviour
 
     void StopMusicForObject(GameObject obj)
     {
-        string clipName = obj.name;
-        if (musicManager != null && musicManager.audioClips.ContainsKey(clipName))
+        DraggableObject draggableObject;
+        if (draggableObjects.TryGetValue(obj, out draggableObject))
         {
-            musicManager.StopMusicForAudioClip(musicManager.audioClips[clipName]);
-        }
-        else
-        {
-            Debug.LogWarning("Clip audio not found for object: " + obj.name);
+            // Retirer l'AudioSource du MusicManager sans arrêter la musique ici
+            AudioSource audioSource = obj.GetComponent<AudioSource>();
+            if (audioSource != null)
+            {
+                musicManager.RemoveAudioSource(audioSource);
+            }
+            else
+            {
+                Debug.LogWarning("AudioSource not found on the object: " + obj.name);
+            }
         }
     }
 }

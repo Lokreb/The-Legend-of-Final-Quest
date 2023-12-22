@@ -8,7 +8,11 @@ public class MusicManager : MonoBehaviour
     private List<AudioSource> audioSources = new List<AudioSource>();
     private List<AudioSource> activeAudioSources = new List<AudioSource>();
     private AudioSource backgroundMusic;
-    public Dictionary<string, AudioClip> audioClips = new Dictionary<string, AudioClip>(); // Ajout de ce champ
+    public Dictionary<string, AudioClip> audioClips = new Dictionary<string, AudioClip>();
+
+    // Ajout de l'événement pour signaler l'arrêt de la musique
+    public delegate void MusicStoppedEventHandler(string clipName);
+    public static event MusicStoppedEventHandler MusicStoppedEvent;
 
     void Awake()
     {
@@ -28,12 +32,7 @@ public class MusicManager : MonoBehaviour
         LoadAudioClips();
     }
 
-    public static MusicManager Instance
-    {
-        get { return instance; }
-    }
-
-    public void PlayMusic(string clipName) // Modification du paramètre
+    public void PlayMusic(string clipName)
     {
         if (audioClips.ContainsKey(clipName))
         {
@@ -63,10 +62,10 @@ public class MusicManager : MonoBehaviour
 
     void LoadAudioClips()
     {
-        // Chargez tous les clips audio dans le dossier "Assets/Audio" (ajustez le chemin selon votre structure de dossiers).
+        // Charger tous les clips audio dans le dossier "Assets/Audio" (ajuster le chemin selon votre structure de dossiers).
         AudioClip[] allAudioClips = Resources.LoadAll<AudioClip>("Audio/Music_Stone_Sample");
 
-        // Ajoutez ces clips audio à votre dictionnaire.
+        // Ajouter ces clips audio à votre dictionnaire.
         foreach (AudioClip audioClip in allAudioClips)
         {
             audioClips[audioClip.name] = audioClip;
@@ -79,21 +78,6 @@ public class MusicManager : MonoBehaviour
         TryStopBackgroundMusic();
     }
 
-    public void StopMusicForAudioClip(AudioClip audioClip)
-    {
-        // Arrêtez le clip audio spécifié
-        foreach (var audioSource in audioSources)
-        {
-            if (audioSource.clip == audioClip)
-            {
-                audioSource.Stop();
-                activeAudioSources.Remove(audioSource);
-                TryStopBackgroundMusic();
-                return;
-            }
-        }
-    }
-
     public void RemoveAudioSource(AudioSource audioSource)
     {
         activeAudioSources.Remove(audioSource);
@@ -102,26 +86,23 @@ public class MusicManager : MonoBehaviour
 
     public void TryStopBackgroundMusic()
     {
-        // Utilise backgroundMusic pour vérifier et arrêter la musique de fond
         if (backgroundMusic != null && backgroundMusic.isPlaying && activeAudioSources.Count == 0)
         {
             backgroundMusic.Stop();
+            // Ajout de la notification d'arrêt de la musique
+            if (MusicStoppedEvent != null)
+            {
+                MusicStoppedEvent.Invoke(backgroundMusic.clip.name);
+            }
         }
     }
 
     public void StopAllMusic()
     {
-        foreach (var audioSource in audioSources)
+        foreach (var audioSource in activeAudioSources)
         {
             Destroy(audioSource);
         }
-        audioSources.Clear();
         activeAudioSources.Clear();
-
-        // Arrêtez la musique de fond si elle est en cours de lecture
-        if (backgroundMusic != null && backgroundMusic.isPlaying)
-        {
-            backgroundMusic.Stop();
-        }
     }
 }
