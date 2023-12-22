@@ -15,12 +15,6 @@
                     ]
                 },
                 {
-                    "questionType": "scale",
-                    "questionText": "Sur une échelle de 1 à 10, quelle note donneriez-vous à ce questionnaire ?",
-                    "minValue": 1,
-                    "maxValue": 10
-                },
-                {
                     "questionType": "choice",
                     "questionText": "Aimez vous les bananes ?",
                     "choices": [
@@ -32,7 +26,7 @@
                 },
                 {
                     "questionType": "choice",
-                    "questionText": "Comment trouves-tu Mario Wonder ?",
+                    "questionText": "Comment trouves tu Mario Wonder ?",
                     "choices": [
                         "Normal",
                         "Trop dur",
@@ -140,13 +134,6 @@
             "partieNom": "Questions de type échelle",
             "questions": [
                 {
-                    "questionType": "scale",
-                    "questionText": "Sur une échelle de 1 à 10, quelle note donneriez-vous à ce questionnaire ?",
-                    "minValue": 1,
-                    "maxValue": 10
-                }
-                ,
-                {
                     "questionType": "choice",
                     "questionText": "Comment ça va ?",
                     "choices": [
@@ -166,6 +153,13 @@
                         "Eblouissant",
                         "Magnifique"
                     ]
+                }
+                ,
+                {
+                    "questionType": "scale",
+                    "questionText": "Sur une échelle de 1 à 10, quelle note donneriez-vous à ce questionnaire ?",
+                    "minValue": 1,
+                    "maxValue": 10
                 }
             ]
         }

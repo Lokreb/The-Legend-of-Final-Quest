@@ -32,8 +32,9 @@ public class Question
 
 public class QuestionManager : MonoBehaviour
 {
-    public TMP_Text questionText;
+    public TMP_Text[] questionText;
     public TMP_Text[] answerTexts;
+    public TMP_Text[] answerMTexts;
     //public GameObject questionPanel;
     public int NbQuestion;
     private Parties questionData;
@@ -42,6 +43,7 @@ public class QuestionManager : MonoBehaviour
     public bool Repondu = false;
     public int questionType;
     private int sliderValue;
+    private List<string> selectedMultipleAnswers = new List<string>();
     public GameManager _GM;
     public SliderScript _sliderScript;
     void Start()
@@ -64,8 +66,10 @@ public class QuestionManager : MonoBehaviour
     public void DisplayQuestion(int index)
     {
         // Afficher la question et ses réponses en fonction de l'index actuel et de la partie actuelle
-        questionText.text = questionData.parties[currentPartieIndex].questions[index].questionText;
-
+        for (int i = 0; i < 3; i++)
+        {
+            questionText[i].text = questionData.parties[currentPartieIndex].questions[index].questionText;
+        }
         for (int i = 0; i < answerTexts.Length; i++)
         {
                 Debug.Log("Je suis de type acier : " + questionData.parties[currentPartieIndex].questions[index].questionType);
@@ -77,7 +81,8 @@ public class QuestionManager : MonoBehaviour
                 else if(questionData.parties[currentPartieIndex].questions[index].questionType == "multiple-choice")
                 {
                     questionType = 2;
-                }
+                    answerMTexts[i].text = questionData.parties[currentPartieIndex].questions[index].choices[i];
+            }
                 else if (questionData.parties[currentPartieIndex].questions[index].questionType == "scale")
                 {
                     questionType = 3;
@@ -86,10 +91,11 @@ public class QuestionManager : MonoBehaviour
             {
                 // Si on a dépassé le nombre de réponses disponibles, cacher le texte de réponse
                 answerTexts[i].gameObject.SetActive(false);
+                answerMTexts[i].gameObject.SetActive(false);
             }
         }
     }
-
+    //Appelé par lesboutons réponses des questions choix unique
     public void SelectAnswer(int answerIndex)
     {
         if (!Repondu) // Vérifie si la question a déjà été répondue
@@ -100,7 +106,7 @@ public class QuestionManager : MonoBehaviour
         NextQuestion();
         }
     }
-
+    //Appelé par le bouton valider des questions sliders
     public void SelectScaleAnswer()
     {
         if (!Repondu)
@@ -110,6 +116,38 @@ public class QuestionManager : MonoBehaviour
             Repondu = true;
             NextQuestion();
         }
+    }
+
+    public void SelectMultipleAnswer(int answerIndex)
+    {
+        Debug.Log("Méthode SelectMultipleAnswer() appelée !");
+        string selectedAnswer = questionData.parties[currentPartieIndex].questions[currentQuestionIndex].choices[answerIndex];
+        if (selectedMultipleAnswers.Contains(selectedAnswer))
+        {
+            selectedMultipleAnswers.Remove(selectedAnswer);
+        }
+        else
+        {
+            if (selectedMultipleAnswers.Count < 4)
+            {
+                selectedMultipleAnswers.Add(selectedAnswer);
+            }
+            else
+            {
+                Debug.Log("Nombre maximum de sélections atteint !");
+            }
+        }
+    }
+    //Appelé par le bouton valider des questions CM
+    public void ValidateMultipleChoiceAnswers()
+    {
+        foreach (string answer in selectedMultipleAnswers)
+        {
+            Debug.Log("La liste de réponses : " + answer);
+        }
+        selectedMultipleAnswers.Clear();
+        Repondu = true;
+        NextQuestion();
     }
 
     public void NextQuestion()
