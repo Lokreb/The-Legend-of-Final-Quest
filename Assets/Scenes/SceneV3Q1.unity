@@ -9602,6 +9602,11 @@ MonoBehaviour:
   - {fileID: 444767537}
   - {fileID: 503977198}
   - {fileID: 1061140563}
+  answerMTexts:
+  - {fileID: 913487097}
+  - {fileID: 1158972074}
+  - {fileID: 1442894570}
+  - {fileID: 316147659}
   NbQuestion: 0
   currentQuestionIndex: 0
   currentPartieIndex: 0

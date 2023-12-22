@@ -34,6 +34,7 @@ public class QuestionManager : MonoBehaviour
 {
     public TMP_Text[] questionText;
     public TMP_Text[] answerTexts;
+    public TMP_Text[] answerMTexts;
     //public GameObject questionPanel;
     public int NbQuestion;
     private Parties questionData;
@@ -80,8 +81,7 @@ public class QuestionManager : MonoBehaviour
                 else if(questionData.parties[currentPartieIndex].questions[index].questionType == "multiple-choice")
                 {
                     questionType = 2;
-                    answerTexts[i].text = questionData.parties[currentPartieIndex].questions[index].choices[i];
-                    Debug.Log(answerTexts[i].text);
+                    answerMTexts[i].text = questionData.parties[currentPartieIndex].questions[index].choices[i];
             }
                 else if (questionData.parties[currentPartieIndex].questions[index].questionType == "scale")
                 {
@@ -91,10 +91,11 @@ public class QuestionManager : MonoBehaviour
             {
                 // Si on a dépassé le nombre de réponses disponibles, cacher le texte de réponse
                 answerTexts[i].gameObject.SetActive(false);
+                answerMTexts[i].gameObject.SetActive(false);
             }
         }
     }
-
+    //Appelé par lesboutons réponses des questions choix unique
     public void SelectAnswer(int answerIndex)
     {
         if (!Repondu) // Vérifie si la question a déjà été répondue
@@ -105,7 +106,7 @@ public class QuestionManager : MonoBehaviour
         NextQuestion();
         }
     }
-
+    //Appelé par le bouton valider des questions sliders
     public void SelectScaleAnswer()
     {
         if (!Repondu)
@@ -137,13 +138,13 @@ public class QuestionManager : MonoBehaviour
             }
         }
     }
-
+    //Appelé par le bouton valider des questions CM
     public void ValidateMultipleChoiceAnswers()
     {
-            foreach (string answer in selectedMultipleAnswers)
-            {
-                Debug.Log("Réponse sélectionnée (multiple choice) : " + answer);
-            }
+        foreach (string answer in selectedMultipleAnswers)
+        {
+            Debug.Log("La liste de réponses : " + answer);
+        }
         selectedMultipleAnswers.Clear();
         Repondu = true;
         NextQuestion();
