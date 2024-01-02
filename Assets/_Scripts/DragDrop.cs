@@ -24,34 +24,18 @@ public class DragDrop : MonoBehaviour
         {
             Debug.LogError("MusicManager not found in the scene.");
         }
-        MusicManager.MusicStoppedEvent += OnMusicStopped;
+
         SyncAudioLoops();
     }
 
     void SyncAudioLoops()
     {
-       /* foreach (var obj in ObjectsDraggable)
+        foreach (var obj in ObjectsDraggable)
         {
             DraggableObject draggableObject = obj.GetComponent<DraggableObject>();
             if (draggableObject != null && draggableObject.audioClip != null)
             {
                 draggableObjects[obj] = draggableObject;
-            }
-        }*/
-    }
-    void OnMusicStopped(string clipName)
-    {
-        // Arrêtez la lecture de la musique pour l'objet associé au clipName
-        foreach (var obj in draggableObjects.Keys)
-        {
-            DraggableObject draggableObject = draggableObjects[obj];
-            if (draggableObject != null && draggableObject.audioClip != null && draggableObject.audioClip.name == clipName)
-            {
-                AudioSource audioSource = obj.GetComponent<AudioSource>();
-                if (audioSource != null && audioSource.isPlaying)
-                {
-                    audioSource.Stop();
-                }
             }
         }
     }
@@ -85,8 +69,7 @@ public class DragDrop : MonoBehaviour
                     {
                         // Désengager l'enfant du slot
                         child.SetParent(null);
-                         StopMusicForObject(objectDrag);
-
+                        StopMusicForObject(objectDrag);
                     }
                     else
                     {
@@ -135,22 +118,17 @@ public class DragDrop : MonoBehaviour
         }
     }
 
-
     void StopMusicForObject(GameObject obj)
     {
         DraggableObject draggableObject;
         if (draggableObjects.TryGetValue(obj, out draggableObject))
         {
-            // Retirer l'AudioSource du MusicManager sans arrêter la musique ici
-            AudioSource audioSource = obj.GetComponent<AudioSource>();
-            if (audioSource != null)
-            {
-                musicManager.RemoveAudioSource(audioSource);
-            }
-            else
+            musicManager.StopMusicForAudioClip(draggableObject.audioClip);
+        }
+        else
             {
                 Debug.LogWarning("AudioSource not found on the object: " + obj.name);
             }
         }
-    }
+    
 }
