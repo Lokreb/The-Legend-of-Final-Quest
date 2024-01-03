@@ -13,7 +13,7 @@ public class Enemy_stat : MonoBehaviour
     public int TrueDammage;
     public int currentPart;
     public int weakness = 1;
-    Animator animator;
+    public Animator animator;
 
     void Start()
     {
@@ -35,7 +35,7 @@ public class Enemy_stat : MonoBehaviour
     {
      
         animator.SetFloat("isAttak", 1);
-        animator.SetFloat("isAttak", 0);
+        
     }
     public bool TakeDamage(int dammage)
     {
@@ -50,7 +50,7 @@ public class Enemy_stat : MonoBehaviour
         else {
             animator.SetFloat("isTanking", 1);
             Debug.Log("pas mort");
-            animator.SetFloat("isTanking", 0);
+            
             return false; }
     }
 }

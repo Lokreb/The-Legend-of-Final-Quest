@@ -164,11 +164,12 @@ public class BattleSystem : MonoBehaviour
             player_unit.animator.SetFloat("isTanking", 1);
             bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
             enemy_unit.Hit();
-           // enemy_unit.animator.setFloat();
+            enemy_unit.animator.SetFloat("isAttak", 1);
             PlayerHPBar.value = player_unit.currentHealth;
-            yield return new WaitForSeconds(1.04f);
+            yield return new WaitForSeconds(1.4f);
             player_unit.animator.SetFloat("isTanking", 0);
-            
+            enemy_unit.animator.SetFloat("isAttak", 0);
+
         }
         else
         {
@@ -189,8 +190,9 @@ public class BattleSystem : MonoBehaviour
             player_unit.animator.SetFloat("isAttak", 0);
             bool isdead = enemy_unit.TakeDamage(player_unit.FinalDammage);
             EnemyHPBar.value = enemy_unit.currentHealth;
-            //animation enemy
+            enemy_unit.animator.SetFloat("isTanking", 1);
             yield return new WaitForSeconds(1.04f);
+            enemy_unit.animator.SetFloat("isTanking", 0);
             if (isdead)
             {
                 state = BattleState.WON;
