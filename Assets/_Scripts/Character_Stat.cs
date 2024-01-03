@@ -76,7 +76,7 @@ public class Character_Stat : MonoBehaviour
             animator.SetFloat("isAttak", -1);
             currentHealth = maxHealth;
             NBHeal--;
-            animator.SetFloat("isAttak", 0);
+            
         }
         
         
