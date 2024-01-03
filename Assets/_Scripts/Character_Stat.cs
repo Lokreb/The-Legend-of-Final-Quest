@@ -19,7 +19,7 @@ public class Character_Stat : MonoBehaviour
     public int dammagetaken;
     public int NBHeal = 3;
     int genderNB = 0;
-    Animator animator;
+    public Animator animator;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -51,8 +51,8 @@ public class Character_Stat : MonoBehaviour
    public void CalculedDammage()
     {
         FinalDammage = level * 2 ^ level * damage;
-        animator.SetFloat("isAttak", 1);
-        animator.SetFloat("isAttak", 0);
+        
+        
     }
 
     public bool TakeDamage(int dammage,int trueDammage)
@@ -61,7 +61,7 @@ public class Character_Stat : MonoBehaviour
         animator.SetFloat("isTanking", 1);
         currentHealth = currentHealth - trueDammage;
         //affichage de faux dommage 
-        animator.SetFloat("isTanking", 0);
+        
         if (currentHealth <= 0)
         {
             return true;

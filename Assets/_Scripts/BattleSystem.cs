@@ -130,22 +130,27 @@ public class BattleSystem : MonoBehaviour
     public void DefineAttakType1()
     {
         AttakType = 1;
+        player_unit.animator.SetFloat("AtkType", AttakType);
     }
     public void DefineAttakType2()
     {
         AttakType = 2;
+        player_unit.animator.SetFloat("AtkType", AttakType);
     }
     public void DefineAttakType3()
     {
         AttakType = 3;
+        player_unit.animator.SetFloat("AtkType", AttakType);
     }
     public void DefineAttakType4()
     {
         AttakType = 4;
+        player_unit.animator.SetFloat("AtkType", AttakType);
     }
     public void DefineAttakType5()
     {
         AttakType = 5;
+       // player_unit.animator.SetFloat(isAttak, AttakType);
     }
 
     IEnumerator PlayerAttack()
@@ -156,9 +161,19 @@ public class BattleSystem : MonoBehaviour
         player_unit.CalculedDammage();
         if (AttakType != enemy_unit.weakness && AttakType != 5)
         {
+            player_unit.animator.SetFloat("isAttak", 1);
+            yield return new WaitForSeconds(2.4f);
+            player_unit.animator.SetFloat("isAttak", 0);
             bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
             enemy_unit.Hit();
             PlayerHPBar.value = player_unit.currentHealth;
+            yield return new WaitForSeconds(1.04f);
+            player_unit.animator.SetFloat("isTanking", 0);
+            
+        }
+        else
+        {
+          //todo 
         }
         if (AttakType != 5) //this is not a heal
         {
@@ -170,9 +185,13 @@ public class BattleSystem : MonoBehaviour
             }
             Reponse();
             QuestionManagerGO.GetComponent<QuestionManager>().Repondu = false;
+            player_unit.animator.SetFloat("isAttak", 1);
+            yield return new WaitForSeconds(2.4f);
+            player_unit.animator.SetFloat("isAttak", 0);
             bool isdead = enemy_unit.TakeDamage(player_unit.FinalDammage);
             EnemyHPBar.value = enemy_unit.currentHealth;
-            yield return new WaitForSeconds(0.5f);
+            //animation enemy
+            yield return new WaitForSeconds(1.04f);
             if (isdead)
             {
                 state = BattleState.WON;
@@ -194,14 +213,16 @@ public class BattleSystem : MonoBehaviour
             StartCoroutine(EnemyTurn());
 
         }
+
         IEnumerator EnemyTurn()
         {
             Debug.Log("tours enemmie");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(2.4f);
             bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
             enemy_unit.Hit();
             PlayerHPBar.value = player_unit.currentHealth;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.04f);
+            player_unit.animator.SetFloat("isTanking", 0);
 
             if (isdead)
             {
