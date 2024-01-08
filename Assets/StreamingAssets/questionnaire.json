@@ -6,16 +6,6 @@
             "questions": [
                 {
                     "questionType": "choice",
-                    "questionText": "Êtes-vous un homme, une femme ou autre ?",
-                    "choices": [
-                        "Je suis un homme",
-                        "Je suis une femme",
-                        "Autre",
-                        ""
-                    ]
-                },
-                {
-                    "questionType": "choice",
                     "questionText": "Aimez vous les bananes ?",
                     "choices": [
                         "J'en mange tous les jours",
