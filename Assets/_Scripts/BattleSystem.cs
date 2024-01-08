@@ -226,8 +226,10 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(2.4f);
             bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
             enemy_unit.Hit();
+            enemy_unit.animator.SetFloat("isAttak", 1);
             PlayerHPBar.value = player_unit.currentHealth;
             yield return new WaitForSeconds(1.04f);
+            enemy_unit.animator.SetFloat("isAttak", 0);
             player_unit.animator.SetFloat("isTanking", 0);
 
             if (isdead)
