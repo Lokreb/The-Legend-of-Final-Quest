@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int partie;
     public int question;
     public int boss;
+    public int gender;
     public static Vector3 savedPlayerPosition;
 
     int worldSceneIndex = 1;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         partie = gameData.savedPartieIndex;
         question = gameData.savedQuestionIndex;
         boss = gameData.nbBoss;
+        gender = gameData.playerGender;
         if (SceneManager.GetActiveScene().buildIndex != worldSceneIndex)
         {
             // Charge la position sauvegardée du joueur
@@ -43,5 +45,15 @@ public class GameManager : MonoBehaviour
 
     public void SaveBoss(int numBoss) {
         gameData.nbBoss = numBoss;
+    }
+
+    public void saveGender(int gender)
+    {
+        gameData.playerGender = gender;
+    }
+
+    public void LoadGender()
+    {
+        gender = gameData.playerGender;
     }
 }

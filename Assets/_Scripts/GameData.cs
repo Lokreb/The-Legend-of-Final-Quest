@@ -10,5 +10,6 @@ public class GameData : ScriptableObject
     public int savedPartieIndex;
     public int savedQuestionIndex;
     public int nbBoss;
+    public int playerGender;
 
 }
