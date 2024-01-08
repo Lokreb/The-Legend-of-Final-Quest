@@ -34,8 +34,9 @@ public class MusicManager : MonoBehaviour
     }
     void Update()
     {
-        string sceneName = SceneManager.GetActiveScene().name;
 
+        string sceneName = SceneManager.GetActiveScene().name;
+        /*
         if (sceneName == "Battle" && GetComponent<GameManager>() != null)
         {
             int currentBoss = GetComponent<GameManager>().boss;
@@ -45,17 +46,9 @@ public class MusicManager : MonoBehaviour
                 PlayMusic("1stBoss");
             }
             else if (currentBoss == 1)
-            {
-                if (!introPlayed)
-                {
-                    PlayMusic("2ndBoss");
-                    
-                }
-                else if (!bossMusicPlaying)
-                {
-                    PlayMusic("2ndBoss");
-                  
-                }
+            {   
+                PlayMusic("2ndBoss");
+              
             }
             else if (currentBoss == 2)
             {
@@ -75,7 +68,7 @@ public class MusicManager : MonoBehaviour
         {
             introPlayed = false;
             bossMusicPlaying = false;
-        }
+        }*/
     }
 
     public void PlayMusic(string clipName, bool loop = true)
@@ -225,6 +218,10 @@ public class MusicManager : MonoBehaviour
             {
                 PlayMusic("3rdBossintro", false);
                 introPlayed = true;
+            }
+            else if (scene.name == "map" && gameManager != null)
+            {
+                StopAllMusic();
             }
             else
             {

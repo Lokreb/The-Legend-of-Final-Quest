@@ -196,6 +196,11 @@ public class BattleSystem : MonoBehaviour
             if (isdead)
             {
                 state = BattleState.WON;
+                enemy_unit.animator.SetFloat("isTanking", -1);
+                enemy_unit.animator.SetFloat("isAttak", -1);
+                yield return new WaitForSeconds(1f);
+                enemy_unit.animator.SetFloat("isTanking", 0);
+                enemy_unit.animator.SetFloat("isAttak", 0);
                 EndBattle();
 
             }
