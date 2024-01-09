@@ -155,20 +155,18 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerAttack()
     {
-        yield return new WaitForSeconds(1.2f);
-        player_unit.animator.SetFloat("isAttak", 0);
-
         player_unit.CalculedDammage();
         if (AttakType != enemy_unit.weakness && AttakType != 5)
         {
-            player_unit.animator.SetFloat("isTanking", 1);
-            bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
             enemy_unit.Hit();
             enemy_unit.animator.SetFloat("isAttak", 1);
-            PlayerHPBar.value = player_unit.currentHealth;
-            yield return new WaitForSeconds(1.4f);
-            player_unit.animator.SetFloat("isTanking", 0);
+            yield return new WaitForSeconds(3.250f);
             enemy_unit.animator.SetFloat("isAttak", 0);
+            player_unit.animator.SetFloat("isTanking", 1);
+            bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
+            PlayerHPBar.value = player_unit.currentHealth;           
+            player_unit.animator.SetFloat("isTanking", 0);
+            
 
         }
         else
@@ -198,7 +196,7 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.WON;
                 enemy_unit.animator.SetFloat("isTanking", -1);
                 enemy_unit.animator.SetFloat("isAttak", -1);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1.7f);
                 enemy_unit.animator.SetFloat("isTanking", 0);
                 enemy_unit.animator.SetFloat("isAttak", 0);
                 EndBattle();
@@ -223,18 +221,22 @@ public class BattleSystem : MonoBehaviour
         IEnumerator EnemyTurn()
         {
             Debug.Log("tours enemmie");
-            yield return new WaitForSeconds(2.4f);
-            bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
             enemy_unit.Hit();
             enemy_unit.animator.SetFloat("isAttak", 1);
+            yield return new WaitForSeconds(3.250f);
+            enemy_unit.animator.SetFloat("isAttak", 0);
+            bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
             PlayerHPBar.value = player_unit.currentHealth;
             yield return new WaitForSeconds(1.04f);
-            enemy_unit.animator.SetFloat("isAttak", 0);
             player_unit.animator.SetFloat("isTanking", 0);
 
             if (isdead)
             {
-
+                player_unit.animator.SetFloat("isTanking", -1);
+                player_unit.animator.SetFloat("isAttak", -1);
+                yield return new WaitForSeconds(1f);
+                player_unit.animator.SetFloat("isTanking", 0);
+                player_unit.animator.SetFloat("isAttak", 0);
                 state = BattleState.LOST;
                 EndBattle();
             }

@@ -50,9 +50,7 @@ public class Character_Stat : MonoBehaviour
 
    public void CalculedDammage()
     {
-        FinalDammage = level * 2 ^ level * damage;
-        
-        
+        FinalDammage = level * 2 ^ level * damage;  
     }
 
     public bool TakeDamage(int dammage,int trueDammage)

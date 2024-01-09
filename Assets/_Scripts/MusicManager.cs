@@ -11,6 +11,7 @@ public class MusicManager : MonoBehaviour
     private AudioSource backgroundMusic;
     public Dictionary<string, AudioClip> audioClips = new Dictionary<string, AudioClip>(); // Ajout de ce champ
     public Dictionary<string, AudioClip> bossMusicClips = new Dictionary<string, AudioClip>();
+    List<string> playingMusicNames = new List<string>();
     private bool introPlayed = false;
     public bool bossMusicPlaying;
     void Awake()
@@ -36,39 +37,6 @@ public class MusicManager : MonoBehaviour
     {
 
         string sceneName = SceneManager.GetActiveScene().name;
-        /*
-        if (sceneName == "Battle" && GetComponent<GameManager>() != null)
-        {
-            int currentBoss = GetComponent<GameManager>().boss;
-
-            if (currentBoss == 0)
-            {
-                PlayMusic("1stBoss");
-            }
-            else if (currentBoss == 1)
-            {   
-                PlayMusic("2ndBoss");
-              
-            }
-            else if (currentBoss == 2)
-            {
-                if (!introPlayed)
-                {
-                    PlayMusic("3rdBossIntro", false);
-                    introPlayed = true;
-                }
-                else if (!bossMusicPlaying)
-                {
-                    PlayMusic("3rdBossLoop");
-                    bossMusicPlaying = true;
-                }
-            }
-        }
-        else
-        {
-            introPlayed = false;
-            bossMusicPlaying = false;
-        }*/
     }
 
     public void PlayMusic(string clipName, bool loop = true)
@@ -87,13 +55,7 @@ public class MusicManager : MonoBehaviour
             }
 
             audioSource.Play();
-
-            // Si l'intro est jouée et la musique doit boucler, détruire l'intro
-            if (introPlayed && loop)
-            {
-                Destroy(audioSources[0]);
-                audioSources.RemoveAt(0);
-            }
+            Debug.Log("le nom de la musique qui passe :" + audioSource.clip.name);
 
             // Ajoutez l'AudioSource à la liste des AudioSources actifs
             AddAudioSource(audioSource);
@@ -104,12 +66,24 @@ public class MusicManager : MonoBehaviour
 
         }
     }
-    public void PlayBossMusic(string bossName)
+    public void PlayBossMusic(string bossName, bool loop = true)
     {
         if (bossMusicClips.ContainsKey(bossName))
         {
             Debug.LogWarning("play music value" + bossMusicClips[bossName].name);
-            PlayMusic(bossMusicClips[bossName].name);
+            PlayMusic(bossMusicClips[bossName].name, loop);
+
+          
+
+
+
+             if (bossName == "3rdBossIntro")
+            {
+                float firstMusicDuration = bossMusicClips[bossName].length;
+                Debug.LogWarning("play music time :" + firstMusicDuration + " in second");
+                StartCoroutine(PlayNextMusicAfterDelay("3rdBossLoop", firstMusicDuration));
+            }
+           
         }
         else
         {
@@ -117,6 +91,13 @@ public class MusicManager : MonoBehaviour
             
         }
     }
+    IEnumerator PlayNextMusicAfterDelay(string nextMusicName, float delay)
+        {
+        Debug.Log("courroutine lancé");
+            yield return new WaitForSeconds(delay);
+            PlayMusic(bossMusicClips[nextMusicName].name, true); // true pour boucler la deuxième musique
+        }
+    
     public void AddAudioSource(AudioSource audioSource)
     {
         activeAudioSources.Add(audioSource);
@@ -179,7 +160,42 @@ public class MusicManager : MonoBehaviour
             backgroundMusic.Stop();
         }
     }
+    public void saveMusic(AudioSource audioSource)
+    {
+        playingMusicNames.Add(audioSource.clip.name);
 
+    }
+
+    public void loadSaveMusics(List<string> musicNames)
+    {
+
+        foreach (var musicName in musicNames)
+        {
+            PlayMusic(musicName);
+        }
+    }
+    public void StopAllMusicAndSave()
+    {
+        int i = 0;
+        foreach (var audioSource in audioSources)
+        {
+            if (audioSource.isPlaying)
+            {
+                saveMusic(audioSource);
+            }
+            
+            Destroy(audioSource);
+            i++;
+        }
+        audioSources.Clear();
+        activeAudioSources.Clear();
+
+        // Arrêtez la musique de fond si elle est en cours de lecture
+        if (backgroundMusic != null && backgroundMusic.isPlaying)
+        {
+            backgroundMusic.Stop();
+        }
+    }
     public void StopAllMusic()
     {
         foreach (var audioSource in audioSources)
@@ -197,18 +213,20 @@ public class MusicManager : MonoBehaviour
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("Scene loaded: " + scene.name);
         // Cherchez le GameManager dans la scène actuelle
         GameManager gameManager = FindObjectOfType<GameManager>();
 
         if (scene.name == "Battle" && gameManager != null)
         {
-            StopAllMusic();
+            //StopAllMusic();
+            StopAllMusicAndSave();
             int numBoss = gameManager.boss;
 
             if (numBoss == 0)
             {
                 PlayBossMusic("1stBoss"); // Jouez la musique du premier boss
-                
+
             }
             else if (numBoss == 1)
             {
@@ -216,17 +234,19 @@ public class MusicManager : MonoBehaviour
             }
             else if (numBoss == 2)
             {
-                PlayMusic("3rdBossintro", false);
-                introPlayed = true;
-            }
-            else if (scene.name == "map" && gameManager != null)
-            {
-                StopAllMusic();
+                PlayBossMusic("3rdBossIntro", false);
+                Debug.Log("3rdBossIntro3rdBossIntro3rdBossIntro3rdBossIntro");
             }
             else
             {
                 Debug.LogWarning("Clip audio not found: limite broken");
             }
+        }
+        else if (scene.name == "Map" && gameManager != null)
+        {
+            StopAllMusic();
+            loadSaveMusics(playingMusicNames);
+            
         }
     }
 }
