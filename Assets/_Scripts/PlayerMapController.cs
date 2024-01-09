@@ -8,10 +8,10 @@ public class PlayerMapController : MonoBehaviour
 {
 
     public UnityEditor.Animations.AnimatorController[] ContollerL;
+    public GameManager GM;
     public float speed = 5f;
     private Rigidbody2D rb;
     private Animator animator;
-    //public LayerMask Walkable;
     public int gender = 0;
 
     private void Start()
@@ -19,8 +19,7 @@ public class PlayerMapController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
         animator = GetComponent<Animator>();
-        //gender = le bon truc
-        this.GetComponent<Animator>().runtimeAnimatorController = ContollerL[gender];
+        this.GetComponent<Animator>().runtimeAnimatorController = ContollerL[GM.gender];
     }
 
     private void Update()
