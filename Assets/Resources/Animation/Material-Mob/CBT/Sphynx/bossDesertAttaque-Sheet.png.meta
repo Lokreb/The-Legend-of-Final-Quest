@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d840edf080b7f4f4ebe544f210e24811
+guid: 8280560970351e044b80f1aef155e374
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_0
+      name: bossDesertAttaque-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b4b5e4ff71eb8749a263152eedc0146
-      internalID: -1500021639
+      spriteID: d9a88ae5ca8a45349a32f6ac38b31794
+      internalID: 37002011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_1
+      name: bossDesertAttaque-Sheet_1
       rect:
         serializedVersion: 2
-        x: 210
+        x: 571
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62fbf8c02ccac64498f6802258761440
-      internalID: -343828172
+      spriteID: ecae3b95b947c284b8b4017e154c5965
+      internalID: 1253889611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_2
+      name: bossDesertAttaque-Sheet_2
       rect:
         serializedVersion: 2
-        x: 420
+        x: 1142
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f37a2aeac804f2e4aa56f32e81dd2c91
-      internalID: 1038382045
+      spriteID: ea590e9a77613694e8a21ad541f4e7e5
+      internalID: 370395731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_3
+      name: bossDesertAttaque-Sheet_3
       rect:
         serializedVersion: 2
-        x: 630
+        x: 1713
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d8559ced74554741b0e3dd551dd16a9
-      internalID: 680383624
+      spriteID: bc9fc038767b2d34a9cf2fb0087cea3b
+      internalID: 448744554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_4
+      name: bossDesertAttaque-Sheet_4
       rect:
         serializedVersion: 2
-        x: 840
+        x: 2284
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62ce2af1f9446df4e965edf63b83a030
-      internalID: 636807028
+      spriteID: 157c395d836add344a74c040692917a6
+      internalID: 441939863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_5
+      name: bossDesertAttaque-Sheet_5
       rect:
         serializedVersion: 2
-        x: 1050
+        x: 2855
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8b8304e3cecee549b85414d49c1ee6a
-      internalID: 413581116
+      spriteID: c9dc984b9e255844889e32e7cb906b9c
+      internalID: 1159116425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_6
+      name: bossDesertAttaque-Sheet_6
       rect:
         serializedVersion: 2
-        x: 1260
+        x: 3426
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 647f252450c776240a6ddfd309da3768
-      internalID: 2031031667
+      spriteID: dd4b531935c54134689ac80007a6332f
+      internalID: 1286091364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_7
+      name: bossDesertAttaque-Sheet_7
       rect:
         serializedVersion: 2
-        x: 1470
+        x: 3997
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c4f38333fb0bdd43b1a486eee67d825
-      internalID: 1510970021
+      spriteID: af7b4c7a68473d74e951a12e2fcafbab
+      internalID: -1755125760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_8
+      name: bossDesertAttaque-Sheet_8
       rect:
         serializedVersion: 2
-        x: 1680
+        x: 4568
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee71d0c8a79e3f844a81108c68937aea
-      internalID: -890439810
+      spriteID: e8d58c911d45b954c8534f59acd494b8
+      internalID: -1249434623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_9
+      name: bossDesertAttaque-Sheet_9
       rect:
         serializedVersion: 2
-        x: 1890
+        x: 5139
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,20 +326,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 692f6e338cdc0d34a95f540b064bdcfa
-      internalID: -1455625068
+      spriteID: db649dabb0197134a96f6a80fd32f681
+      internalID: -1990011025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_10
+      name: bossDesertAttaque-Sheet_10
       rect:
         serializedVersion: 2
-        x: 2100
+        x: 5710
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,20 +347,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6df01a445b333404383f9f8eea11da38
-      internalID: -816381486
+      spriteID: 29f4868c9266c2c45bd79a8122cf7f6a
+      internalID: -1748489720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_11
+      name: bossDesertAttaque-Sheet_11
       rect:
         serializedVersion: 2
-        x: 2310
+        x: 6281
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -368,20 +368,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dccbb603c14f52e409ed25cf3167a284
-      internalID: 272608894
+      spriteID: b545cb6b37ff2934e9a197423621156e
+      internalID: 360221465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_12
+      name: bossDesertAttaque-Sheet_12
       rect:
         serializedVersion: 2
-        x: 2520
+        x: 6852
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,20 +389,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed7a186f5c1c8fe49afa8c27a14d9a69
-      internalID: -1464436180
+      spriteID: 83c39e4fc9c238a47aa9651973e5efcc
+      internalID: 1009554944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_13
+      name: bossDesertAttaque-Sheet_13
       rect:
         serializedVersion: 2
-        x: 2730
+        x: 7423
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -410,20 +410,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2f1ca5196a998c469fced538f5158c9
-      internalID: 1704527168
+      spriteID: 0107165d2d605a04c8123d9d2bb06cae
+      internalID: -1460638932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersoGarconMagie-Sheet_14
+      name: bossDesertAttaque-Sheet_14
       rect:
         serializedVersion: 2
-        x: 2940
+        x: 7994
         y: 0
-        width: 210
-        height: 178
+        width: 571
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,8 +431,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b5f3db450a0fb747aa0b2d74cb1cc65
-      internalID: -569191620
+      spriteID: e1f19f7d12572004cb00d30d1ffd8979
+      internalID: -1793719318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossDesertAttaque-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 8565
+        y: 0
+        width: 571
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b186fb52777534cb94ce29db99b711
+      internalID: 1098085370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossDesertAttaque-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 9136
+        y: 0
+        width: 571
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe0de30dc6f0dc4192a4b839e458ac0
+      internalID: 1691635256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossDesertAttaque-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 9707
+        y: 0
+        width: 571
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1df974cffe7b8754f9fc805c0dbaaaad
+      internalID: -1565021823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossDesertAttaque-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 10278
+        y: 0
+        width: 571
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e5704b7626ea634f9ec35ca8a7274f2
+      internalID: 793231744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bossDesertAttaque-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 10849
+        y: 0
+        width: 571
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec8d49d969e4f64cad1e94ed72399e5
+      internalID: -1447307743
       vertices: []
       indices: 
       edges: []
@@ -448,21 +553,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PersoGarconMagie-Sheet_0: -1500021639
-      PersoGarconMagie-Sheet_1: -343828172
-      PersoGarconMagie-Sheet_10: -816381486
-      PersoGarconMagie-Sheet_11: 272608894
-      PersoGarconMagie-Sheet_12: -1464436180
-      PersoGarconMagie-Sheet_13: 1704527168
-      PersoGarconMagie-Sheet_14: -569191620
-      PersoGarconMagie-Sheet_2: 1038382045
-      PersoGarconMagie-Sheet_3: 680383624
-      PersoGarconMagie-Sheet_4: 636807028
-      PersoGarconMagie-Sheet_5: 413581116
-      PersoGarconMagie-Sheet_6: 2031031667
-      PersoGarconMagie-Sheet_7: 1510970021
-      PersoGarconMagie-Sheet_8: -890439810
-      PersoGarconMagie-Sheet_9: -1455625068
+      bossDesertAttaque-Sheet_0: 37002011
+      bossDesertAttaque-Sheet_1: 1253889611
+      bossDesertAttaque-Sheet_10: -1748489720
+      bossDesertAttaque-Sheet_11: 360221465
+      bossDesertAttaque-Sheet_12: 1009554944
+      bossDesertAttaque-Sheet_13: -1460638932
+      bossDesertAttaque-Sheet_14: -1793719318
+      bossDesertAttaque-Sheet_15: 1098085370
+      bossDesertAttaque-Sheet_16: 1691635256
+      bossDesertAttaque-Sheet_17: -1565021823
+      bossDesertAttaque-Sheet_18: 793231744
+      bossDesertAttaque-Sheet_19: -1447307743
+      bossDesertAttaque-Sheet_2: 370395731
+      bossDesertAttaque-Sheet_3: 448744554
+      bossDesertAttaque-Sheet_4: 441939863
+      bossDesertAttaque-Sheet_5: 1159116425
+      bossDesertAttaque-Sheet_6: 1286091364
+      bossDesertAttaque-Sheet_7: -1755125760
+      bossDesertAttaque-Sheet_8: -1249434623
+      bossDesertAttaque-Sheet_9: -1990011025
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

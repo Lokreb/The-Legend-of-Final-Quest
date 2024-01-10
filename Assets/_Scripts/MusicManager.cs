@@ -93,7 +93,6 @@ public class MusicManager : MonoBehaviour
     }
     IEnumerator PlayNextMusicAfterDelay(string nextMusicName, float delay)
         {
-        Debug.Log("courroutine lancé");
             yield return new WaitForSeconds(delay);
             PlayMusic(bossMusicClips[nextMusicName].name, true); // true pour boucler la deuxième musique
         }
