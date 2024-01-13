@@ -12,6 +12,7 @@ public class MusicManager : MonoBehaviour
     public Dictionary<string, AudioClip> audioClips = new Dictionary<string, AudioClip>(); // Ajout de ce champ
     public Dictionary<string, AudioClip> bossMusicClips = new Dictionary<string, AudioClip>();
     List<string> playingMusicNames = new List<string>();
+    public AudioClip[] BattleSound;
     private bool introPlayed = false;
     public bool bossMusicPlaying;
     void Awake()

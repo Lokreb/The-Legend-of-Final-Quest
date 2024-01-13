@@ -18,6 +18,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject QuestionManagerGO;
     public Button[] questionBouton;
     public Button[] ActionButton;
+    public GameObject[] Degats;
     public bool isPlayerTurn;
     public TMP_Text lvl;
     public TMP_Text Enemyname;
@@ -36,10 +37,14 @@ public class BattleSystem : MonoBehaviour
     // public bool Repondu = false;
     public WhereIamI Wii;
     public QuestionManager _QM;
+    private bool clicked = false;
+    public GameObject waitPanel;
+    MusicManager musicManager;
+    string SoundName;
     void Start()
     {
         EcranDeChargement.SetActive(true);
-        MusicManager musicManager = FindObjectOfType<MusicManager>();
+        musicManager = FindObjectOfType<MusicManager>();
         if (musicManager != null)
         {
             // Utilisez musicManager pour contrôler la musique
@@ -53,19 +58,30 @@ public class BattleSystem : MonoBehaviour
     private void Update()
     {
 
-        if (state == BattleState.PLAYERTURN)
+        if (state == BattleState.PLAYERTURN && !clicked)
         {
             foreach (Button bouton in ActionButton)
             {
                 bouton.interactable = true;
+               
+
             }
+            clicked = true;
+            AttaquePanel.SetActive(true);
+            ActionPanel.SetActive(true);
+            waitPanel.SetActive(false);
         }
-        else if (state != BattleState.PLAYERTURN)
+        else if (state != BattleState.PLAYERTURN && clicked)
         {
             foreach (Button bouton in ActionButton)
             {
                 bouton.interactable = false;
+               
             }
+            AttaquePanel.SetActive(false);
+            ActionPanel.SetActive(false);
+            clicked = false;
+            waitPanel.SetActive(true) ;
         }
         Nbheal.text = "Restant : " + player_unit.NBHeal.ToString();
 
@@ -131,21 +147,25 @@ public class BattleSystem : MonoBehaviour
     {
         AttakType = 1;
         player_unit.animator.SetFloat("AtkType", AttakType);
+        SoundName = "SwordSpearAttack";
     }
     public void DefineAttakType2()
     {
         AttakType = 2;
         player_unit.animator.SetFloat("AtkType", AttakType);
+        SoundName = "BowAttack";
     }
     public void DefineAttakType3()
     {
         AttakType = 3;
         player_unit.animator.SetFloat("AtkType", AttakType);
+        SoundName = "SwordSpearAttack";
     }
     public void DefineAttakType4()
     {
         AttakType = 4;
         player_unit.animator.SetFloat("AtkType", AttakType);
+        SoundName = "MagicAttack";
     }
     public void DefineAttakType5()
     {
@@ -160,11 +180,14 @@ public class BattleSystem : MonoBehaviour
         {
             enemy_unit.Hit();
             enemy_unit.animator.SetFloat("isAttak", 1);
+            musicManager.PlayMusic("BossAttack", false);
             yield return new WaitForSeconds(3.250f);
             enemy_unit.animator.SetFloat("isAttak", 0);
             player_unit.animator.SetFloat("isTanking", 1);
             bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
-            PlayerHPBar.value = player_unit.currentHealth;           
+            PlayerHPBar.value = player_unit.currentHealth;  
+            musicManager.PlayMusic("TakeDamage", false);
+            yield return new WaitForSeconds(1.4f);
             player_unit.animator.SetFloat("isTanking", 0);
             
 
@@ -175,6 +198,7 @@ public class BattleSystem : MonoBehaviour
         }
         if (AttakType != 5) //this is not a heal
         {
+            waitPanel.SetActive(false);
             Reponse();
 
             while (!QuestionManagerGO.GetComponent<QuestionManager>().Repondu)
@@ -182,20 +206,34 @@ public class BattleSystem : MonoBehaviour
                 yield return null; // Attendez la prochaine frame
             }
             Reponse();
+            waitPanel.SetActive(true);
             QuestionManagerGO.GetComponent<QuestionManager>().Repondu = false;
             player_unit.animator.SetFloat("isAttak", 1);
+            musicManager.PlayMusic(SoundName, false);
+            if (AttakType == enemy_unit.weakness)
+            {
+                musicManager.PlayMusic("Weakness", false);
+                Degats[1].SetActive(true);
+                //Degats[1].GetComponent<Animation>().Play(Degats[1].Animation[0].name);
+            }
+            else
+            {
+
+            }
             yield return new WaitForSeconds(2.4f);
             player_unit.animator.SetFloat("isAttak", 0);
             bool isdead = enemy_unit.TakeDamage(player_unit.FinalDammage);
             EnemyHPBar.value = enemy_unit.currentHealth;
+            musicManager.PlayMusic("TakeDamage", false);
             enemy_unit.animator.SetFloat("isTanking", 1);
-            yield return new WaitForSeconds(1.04f);
+            yield return new WaitForSeconds(1.4f);
             enemy_unit.animator.SetFloat("isTanking", 0);
             if (isdead)
             {
                 state = BattleState.WON;
                 enemy_unit.animator.SetFloat("isTanking", -1);
                 enemy_unit.animator.SetFloat("isAttak", -1);
+                musicManager.PlayMusic("Death", false);
                 yield return new WaitForSeconds(1.7f);
                 enemy_unit.animator.SetFloat("isTanking", 0);
                 enemy_unit.animator.SetFloat("isAttak", 0);
@@ -211,8 +249,12 @@ public class BattleSystem : MonoBehaviour
 
 
         }
-        else
+        else if (AttakType == 5)
         {
+            SoundName = "Heal";
+            musicManager.PlayMusic(SoundName, false);
+            yield return new WaitForSeconds(2.4f);
+            player_unit.animator.SetFloat("isAttak", 0);
             state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
 
@@ -223,17 +265,20 @@ public class BattleSystem : MonoBehaviour
             Debug.Log("tours enemmie");
             enemy_unit.Hit();
             enemy_unit.animator.SetFloat("isAttak", 1);
+            musicManager.PlayMusic("BossAttack", false);
             yield return new WaitForSeconds(3.250f);
             enemy_unit.animator.SetFloat("isAttak", 0);
             bool isdead = player_unit.TakeDamage(enemy_unit.damage, enemy_unit.TrueDammage);
             PlayerHPBar.value = player_unit.currentHealth;
-            yield return new WaitForSeconds(1.04f);
+            musicManager.PlayMusic("TakeDamage", false);
+            yield return new WaitForSeconds(1.4f);
             player_unit.animator.SetFloat("isTanking", 0);
 
             if (isdead)
             {
                 player_unit.animator.SetFloat("isTanking", -1);
                 player_unit.animator.SetFloat("isAttak", -1);
+                musicManager.PlayMusic("Death", false);
                 yield return new WaitForSeconds(1f);
                 player_unit.animator.SetFloat("isTanking", 0);
                 player_unit.animator.SetFloat("isAttak", 0);
@@ -279,8 +324,8 @@ public class BattleSystem : MonoBehaviour
     {
         if (QuestionManagerGO.GetComponent<QuestionManager>().Repondu == false)
         {
-            AttaquePanel.SetActive(false);
-            if(QuestionManagerGO.GetComponent<QuestionManager>().questionType == 1)
+            
+            if (QuestionManagerGO.GetComponent<QuestionManager>().questionType == 1)
             {
                 QuestionPanel[0].SetActive(true);
             } 
@@ -300,7 +345,7 @@ public class BattleSystem : MonoBehaviour
             {
                 QuestionPanel[i].SetActive(false);
             }
-            AttaquePanel.SetActive(true);
+            
         }
 
 

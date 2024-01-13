@@ -45,7 +45,10 @@ public class Enemy_stat : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("mort");
+            animator.SetFloat("isAttak", -1);
+            animator.SetFloat("isTanking", -1);
             return true;
+            
         }
         else {
             animator.SetFloat("isTanking", 1);

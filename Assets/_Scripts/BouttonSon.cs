@@ -24,19 +24,7 @@ public class BouttonSon : MonoBehaviour
         }
     }
 
-
-public void OnPointerEnter(PointerEventData eventData)
-    {
-        Debug.Log("kiwiiiite");
-        JouerSonSurvol();
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        StopperSonSurvol();
-    }
-
-    void JouerSonSurvol()
+   public void JouerSonSurvol()
     {
         if (sonSurvol != null)
         {
