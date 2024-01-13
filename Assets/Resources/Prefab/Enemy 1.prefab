@@ -106,6 +106,7 @@ MonoBehaviour:
   TrueDammage: 5
   currentPart: 1
   weakness: 1
+  animator: {fileID: 0}
 --- !u!95 &4743897942384606222
 Animator:
   serializedVersion: 5

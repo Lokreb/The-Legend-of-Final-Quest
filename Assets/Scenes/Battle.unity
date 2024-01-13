@@ -624,13 +624,14 @@ GameObject:
   - component: {fileID: 91318812}
   - component: {fileID: 91318811}
   - component: {fileID: 91318810}
+  - component: {fileID: 91318813}
   m_Layer: 0
   m_Name: DmgEff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!111 &91318810
 Animation:
   m_ObjectHideFlags: 0
@@ -716,6 +717,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2045304650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &91318813
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91318809}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &117818434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1325,7 @@ RectTransform:
   m_GameObject: {fileID: 184434802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.86, y: 8.23, z: 2.1}
+  m_LocalScale: {x: 1.86, y: 10.5, z: 2.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1105912562}
@@ -1361,7 +1383,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.95
+  m_fontSize: 27.85
   m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1397,7 +1419,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 37.84572, y: 0, z: 29.139221, w: 0}
+  m_margin: {x: 57.73729, y: 0, z: 44.84311, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4888,15 +4910,15 @@ RectTransform:
   m_GameObject: {fileID: 798574469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.8, y: 2.8, z: 2.8}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 2.8, y: 6, z: 2.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1365377139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 8, y: 260}
-  m_SizeDelta: {x: 200, y: 90.53}
+  m_SizeDelta: {x: -1660, y: -3973.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798574471
 MonoBehaviour:
@@ -4981,7 +5003,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 5.795475, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5225,8 +5247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11, y: 1321}
-  m_SizeDelta: {x: 1031.2, y: 60.446}
+  m_AnchoredPosition: {x: -2.49, y: 1360.4}
+  m_SizeDelta: {x: 1022.05, y: 50.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &840871095
 MonoBehaviour:
@@ -5275,7 +5297,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.95
+  m_fontSize: 27.55
   m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5311,7 +5333,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 37.84572, y: 0, z: 29.139221, w: 0}
+  m_margin: {x: 60.20717, y: 0, z: 43.369263, w: 1.9143047}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6741,7 +6763,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 37.84572, y: 0, z: 29.139221, w: 0}
+  m_margin: {x: 57.73729, y: 0, z: 47.983826, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7866,6 +7888,13 @@ MonoBehaviour:
   Degats:
   - {fileID: 1395398115}
   - {fileID: 91318809}
+  DegatsAnimes:
+  - {fileID: 9100000, guid: 4fd246ba61522454a9ad71a91f411a6e, type: 2}
+  - {fileID: 9100000, guid: b1c244ceaea0a4b40936a0aeda16a5ba, type: 2}
+  - {fileID: 9100000, guid: f18047b8cf9b4544581b9c5092d912b2, type: 2}
+  - {fileID: 9100000, guid: 5f4876ba1722ec14b9450b7a39478a20, type: 2}
+  - {fileID: 9100000, guid: 895320fee57b55b4197d2ffa27fce595, type: 2}
+  - {fileID: 9100000, guid: a963ef4dd7ea2124ebff30148d5df2d9, type: 2}
   isPlayerTurn: 0
   lvl: {fileID: 320225164}
   Enemyname: {fileID: 620863430}
@@ -8219,13 +8248,14 @@ GameObject:
   - component: {fileID: 1395398116}
   - component: {fileID: 1395398118}
   - component: {fileID: 1395398117}
+  - component: {fileID: 1395398119}
   m_Layer: 0
   m_Name: Dmg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1395398116
 Transform:
   m_ObjectHideFlags: 0
@@ -8311,6 +8341,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1395398119
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395398115}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1442894568
 GameObject:
   m_ObjectHideFlags: 0

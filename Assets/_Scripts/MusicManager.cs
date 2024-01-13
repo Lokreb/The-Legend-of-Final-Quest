@@ -40,7 +40,7 @@ public class MusicManager : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
     }
 
-    public void PlayMusic(string clipName, bool loop = true)
+    public void PlayMusic(string clipName, bool loop = true, float V = 1f)
     {
         if (audioClips.ContainsKey(clipName))
         {
@@ -48,6 +48,7 @@ public class MusicManager : MonoBehaviour
             AudioSource audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = audioClip;
             audioSource.loop = loop;
+            audioSource.volume = V;
             audioSources.Add(audioSource);
 
             if (backgroundMusic == null)
@@ -67,7 +68,7 @@ public class MusicManager : MonoBehaviour
 
         }
     }
-    public void PlayBossMusic(string bossName, bool loop = true)
+    public void PlayBossMusic(string bossName, bool loop = true, float V = 0.5f)
     {
         if (bossMusicClips.ContainsKey(bossName))
         {

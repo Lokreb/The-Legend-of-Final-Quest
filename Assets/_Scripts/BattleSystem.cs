@@ -5,8 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
-
+using UnityEditor.Animations;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
@@ -19,6 +18,7 @@ public class BattleSystem : MonoBehaviour
     public Button[] questionBouton;
     public Button[] ActionButton;
     public GameObject[] Degats;
+    public AnimatorController[] DegatsAnimes;
     public bool isPlayerTurn;
     public TMP_Text lvl;
     public TMP_Text Enemyname;
@@ -38,6 +38,7 @@ public class BattleSystem : MonoBehaviour
     public WhereIamI Wii;
     public QuestionManager _QM;
     private bool clicked = false;
+    private bool QuestionPanelActive = false;
     public GameObject waitPanel;
     MusicManager musicManager;
     string SoundName;
@@ -81,7 +82,15 @@ public class BattleSystem : MonoBehaviour
             AttaquePanel.SetActive(false);
             ActionPanel.SetActive(false);
             clicked = false;
-            waitPanel.SetActive(true) ;
+            if (QuestionPanelActive == false)
+            {
+                waitPanel.SetActive(true);
+            }
+            else
+            {
+                waitPanel.SetActive(false);
+            }
+           
         }
         Nbheal.text = "Restant : " + player_unit.NBHeal.ToString();
 
@@ -198,6 +207,8 @@ public class BattleSystem : MonoBehaviour
         }
         if (AttakType != 5) //this is not a heal
         {
+
+            QuestionPanelActive = true;
             waitPanel.SetActive(false);
             Reponse();
 
@@ -206,27 +217,32 @@ public class BattleSystem : MonoBehaviour
                 yield return null; // Attendez la prochaine frame
             }
             Reponse();
+            QuestionPanelActive = false;
             waitPanel.SetActive(true);
             QuestionManagerGO.GetComponent<QuestionManager>().Repondu = false;
             player_unit.animator.SetFloat("isAttak", 1);
-            musicManager.PlayMusic(SoundName, false);
-            if (AttakType == enemy_unit.weakness)
-            {
-                musicManager.PlayMusic("Weakness", false);
-                Degats[1].SetActive(true);
-                //Degats[1].GetComponent<Animation>().Play(Degats[1].Animation[0].name);
-            }
-            else
-            {
-
-            }
+            musicManager.PlayMusic(SoundName, false);         
             yield return new WaitForSeconds(2.4f);
             player_unit.animator.SetFloat("isAttak", 0);
             bool isdead = enemy_unit.TakeDamage(player_unit.FinalDammage);
             EnemyHPBar.value = enemy_unit.currentHealth;
             musicManager.PlayMusic("TakeDamage", false);
             enemy_unit.animator.SetFloat("isTanking", 1);
-            yield return new WaitForSeconds(1.4f);
+            if (AttakType == enemy_unit.weakness)
+            {
+                musicManager.PlayMusic("Weakness", false);
+                Degats[1].SetActive(true);
+                Degats[1].GetComponent<Animator>().runtimeAnimatorController = DegatsAnimes[player_unit.level - 1];
+                yield return new WaitForSeconds(1.4f);
+                Degats[1].SetActive(false);
+            }
+            else
+            {
+                Degats[0].SetActive(true);
+                Degats[0].GetComponent<Animator>().runtimeAnimatorController = DegatsAnimes[player_unit.level - 1 + 3];
+                yield return new WaitForSeconds(1.4f);
+                Degats[0].SetActive(false);
+            }         
             enemy_unit.animator.SetFloat("isTanking", 0);
             if (isdead)
             {
@@ -321,10 +337,10 @@ public class BattleSystem : MonoBehaviour
     }
 
     public void Reponse()
-    {
+    {      
         if (QuestionManagerGO.GetComponent<QuestionManager>().Repondu == false)
         {
-            
+           
             if (QuestionManagerGO.GetComponent<QuestionManager>().questionType == 1)
             {
                 QuestionPanel[0].SetActive(true);
@@ -347,7 +363,6 @@ public class BattleSystem : MonoBehaviour
             }
             
         }
-
 
     }
 }

@@ -47,7 +47,7 @@ public class ZonePopup : MonoBehaviour
         canvasGroup.alpha = 1f;
 
         // Attends pendant la durée d'affichage
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         // Fondu de sortie
         elapsedTime = 0f;
