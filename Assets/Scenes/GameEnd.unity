@@ -847,7 +847,7 @@ MonoBehaviour:
   Token1:
   - {fileID: 9100000, guid: 35f1c4c7cf148da429e8f74802fee908, type: 2}
   - {fileID: 9100000, guid: f716902401dac604e9a05555bb932e91, type: 2}
-  - {fileID: 9100000, guid: fd78931dd74e5a7439fab4b51d73edfa, type: 2}
+  - {fileID: 9100000, guid: 56424a3938abb4e42b9a3aba4bb01229, type: 2}
   - {fileID: 9100000, guid: 7d66b57fc8ee97647ae64bbf660cf56a, type: 2}
   Token2:
   - {fileID: 9100000, guid: 1b95ea550281c4d47b9d8263ccc85029, type: 2}
@@ -867,6 +867,7 @@ MonoBehaviour:
   - {fileID: 53370988}
   fadeInDuration: 2
   LastWord: {fileID: 2098069736}
+  targetScale: {x: 1.6, y: 1.6, z: 1}
 --- !u!114 &832935166
 MonoBehaviour:
   m_ObjectHideFlags: 0
