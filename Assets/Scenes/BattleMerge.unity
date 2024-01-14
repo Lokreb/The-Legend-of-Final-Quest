@@ -1306,6 +1306,8 @@ MonoBehaviour:
   ActionButton:
   - {fileID: 206719146}
   - {fileID: 1969755772}
+  Degats: []
+  DegatsAnimes: []
   isPlayerTurn: 0
   lvl: {fileID: 1655288372}
   Enemyname: {fileID: 240652862}
@@ -1326,6 +1328,7 @@ MonoBehaviour:
   LevelToLoad: Map
   Wii: {fileID: 363882479}
   _QM: {fileID: 894760106}
+  waitPanel: {fileID: 0}
 --- !u!4 &235239230
 Transform:
   m_ObjectHideFlags: 0
@@ -10435,6 +10438,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1304792020}
   - {fileID: 191452462}
+  - {fileID: 1903876067}
   - {fileID: 894760107}
   - {fileID: 235239230}
   - {fileID: 1212807477}
@@ -10442,4 +10446,3 @@ SceneRoots:
   - {fileID: 1206882480}
   - {fileID: 1415732491}
   - {fileID: 523312517}
-  - {fileID: 1903876067}

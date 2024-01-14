@@ -1,9 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;   
 using UnityEngine;
 
 public class SuiveurCompagnon : MonoBehaviour
 {
+    public GameManager GM;
     public Transform joueur;
+    public Transform self;
     public float distanceSuivi = 2f;
     public float vitesseDuCompagnon = 5f;
 
@@ -13,6 +16,17 @@ public class SuiveurCompagnon : MonoBehaviour
     void Start()
     {
         dernierePositionJoueur = joueur.position;
+        if (GM.boss == 1)
+        {
+            Vector3 newPosition = new Vector3(GM.passedPlayerPosition.x, GM.passedPlayerPosition.y, GM.passedPlayerPosition.z);
+            joueur.transform.position = newPosition;
+            self.transform.position = newPosition;
+        }
+        else if (GM.boss == 2)
+        {
+            Vector3 newPosition = new Vector3(GM.passedPlayerPosition.x, GM.passedPlayerPosition.y, GM.passedPlayerPosition.z);
+            joueur.transform.position = newPosition;
+        }
     }
 
     void Update()
