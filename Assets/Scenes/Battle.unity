@@ -300,7 +300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &64135439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1118,8 +1118,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 124.03, y: 1321}
-  m_SizeDelta: {x: 886.01, y: 60.4}
+  m_AnchoredPosition: {x: 130.07, y: 1321}
+  m_SizeDelta: {x: 860.37, y: 60.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &184434804
 MonoBehaviour:
@@ -2099,6 +2099,8 @@ GameObject:
   - component: {fileID: 369599498}
   - component: {fileID: 369599500}
   - component: {fileID: 369599499}
+  - component: {fileID: 369599501}
+  - component: {fileID: 369599502}
   m_Layer: 5
   m_Name: Panzo3
   m_TagString: Untagged
@@ -2115,8 +2117,8 @@ RectTransform:
   m_GameObject: {fileID: 369599497}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 500.00006, y: 1499.9984, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 100.00009, y: 300, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1365377139}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -2166,7 +2168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 60585afdaf6f43c4f9e456e16cb285f0, type: 3}
+  m_Sprite: {fileID: 482109224, guid: 6897ab52f1c379c4aba278e0f4469f25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2185,6 +2187,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369599497}
   m_CullTransparentMesh: 1
+--- !u!95 &369599501
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369599497}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f824c2a534f9b59488a77f5a240a62af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &369599502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369599497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c59561a5a878b46aac8d4480c3d4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &381670450
 GameObject:
   m_ObjectHideFlags: 0
@@ -4766,6 +4801,7 @@ GameObject:
   - component: {fileID: 769044922}
   - component: {fileID: 769044921}
   - component: {fileID: 769044923}
+  - component: {fileID: 769044924}
   m_Layer: 5
   m_Name: Panzo1
   m_TagString: Untagged
@@ -4782,8 +4818,8 @@ RectTransform:
   m_GameObject: {fileID: 769044919}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 500, y: 1500, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 99.99999, y: 300, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 64135439}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -4833,7 +4869,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 60585afdaf6f43c4f9e456e16cb285f0, type: 3}
+  m_Sprite: {fileID: 482109224, guid: 6897ab52f1c379c4aba278e0f4469f25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4862,7 +4898,7 @@ Animator:
   m_GameObject: {fileID: 769044919}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 947008e2ac11db64da293cf5cc1c433a, type: 2}
+  m_Controller: {fileID: 9100000, guid: f824c2a534f9b59488a77f5a240a62af, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4873,6 +4909,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &769044924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769044919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c59561a5a878b46aac8d4480c3d4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &798574469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5238,8 +5286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115.12, y: 1321}
-  m_SizeDelta: {x: 876.43, y: 60.4}
+  m_AnchoredPosition: {x: 130.06, y: 1321}
+  m_SizeDelta: {x: 860.36, y: 60.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &840871095
 MonoBehaviour:
@@ -6636,8 +6684,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 132, y: 1321}
-  m_SizeDelta: {x: 858.28, y: 60.4}
+  m_AnchoredPosition: {x: 137.98, y: 1321}
+  m_SizeDelta: {x: 851.85, y: 60.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1050993157
 MonoBehaviour:
@@ -7259,6 +7307,8 @@ GameObject:
   - component: {fileID: 1158171701}
   - component: {fileID: 1158171703}
   - component: {fileID: 1158171702}
+  - component: {fileID: 1158171704}
+  - component: {fileID: 1158171705}
   m_Layer: 5
   m_Name: Panzo2
   m_TagString: Untagged
@@ -7275,8 +7325,8 @@ RectTransform:
   m_GameObject: {fileID: 1158171700}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 500.00006, y: 1499.9984, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 100.00009, y: 300, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 696817879}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -7326,7 +7376,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 60585afdaf6f43c4f9e456e16cb285f0, type: 3}
+  m_Sprite: {fileID: 482109224, guid: 6897ab52f1c379c4aba278e0f4469f25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7345,6 +7395,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158171700}
   m_CullTransparentMesh: 1
+--- !u!95 &1158171704
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158171700}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f824c2a534f9b59488a77f5a240a62af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1158171705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158171700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c59561a5a878b46aac8d4480c3d4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158972072
 GameObject:
   m_ObjectHideFlags: 0
