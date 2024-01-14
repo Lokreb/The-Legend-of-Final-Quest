@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
-using UnityEditorInternal;
+
 
 public class PlayerMapController : MonoBehaviour
 {
 
-    public UnityEditor.Animations.AnimatorController[] ContollerL;
+    public RuntimeAnimatorController[] ContollerL;
     public GameManager GM;
     public float speed = 5f;
     private Rigidbody2D rb;

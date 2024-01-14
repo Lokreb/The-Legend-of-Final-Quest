@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor.Animations;
+using UnityEngine.Animations;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
@@ -18,7 +18,7 @@ public class BattleSystem : MonoBehaviour
     public Button[] questionBouton;
     public Button[] ActionButton;
     public GameObject[] Degats;
-    public AnimatorController[] DegatsAnimes;
+    public RuntimeAnimatorController[] DegatsAnimes;
     public bool isPlayerTurn;
     public TMP_Text lvl;
     public TMP_Text Enemyname;
@@ -321,6 +321,7 @@ public class BattleSystem : MonoBehaviour
                 Debug.Log("Je sauvegarde : " + QuestionManagerGO.GetComponent<QuestionManager>().currentPartieIndex);
                 GM.SaveBoss(Wii.CounterOfBoss);
                 EcranDeChargement.SetActive(true);
+                musicManager.StopAllMusic();
                 LoadLevel();
             }
             else if (state == BattleState.LOST)
@@ -331,7 +332,15 @@ public class BattleSystem : MonoBehaviour
         }
         void LoadLevel()
         {
-            SceneManager.LoadScene(LevelToLoad);
+            if (Wii.CounterOfBoss == 3)
+            {
+                SceneManager.LoadScene("GameEnd");
+            }
+            else
+            {
+                SceneManager.LoadScene(LevelToLoad);
+            }
+            
         }
 
 

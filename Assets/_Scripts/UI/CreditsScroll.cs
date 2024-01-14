@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEditor.Animations;
+
 
 public class CreditsScroll : MonoBehaviour
 {
@@ -14,9 +14,9 @@ public class CreditsScroll : MonoBehaviour
     public string[] ForthPart;
     public float scrollSpeed = 2f;
     public float delayBeforeSceneChange = 5f;
-    public AnimatorController[] Token0;
-    public AnimatorController[] Token1;
-    public AnimatorController[] Token2;
+    public RuntimeAnimatorController[] Token0;
+    public RuntimeAnimatorController[] Token1;
+    public RuntimeAnimatorController[] Token2;
     public GameObject[] TokenList;
     public CanvasGroup canvasGroup;
     public GameObject[] BackGround;

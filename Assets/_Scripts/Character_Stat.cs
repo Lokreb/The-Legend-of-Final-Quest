@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Analytics;
 
@@ -12,9 +11,8 @@ public class Character_Stat : MonoBehaviour
     public int currentHealth;
     public List<Sprite> sprites;
    // public List<Animation> anims;
-    public List<AnimatorController> Controllers;
+    public RuntimeAnimatorController[] Controllers;
     public int FinalDammage;
-    SpriteRenderer spriteRenderer;
     public int dammagetaken;
     public int NBHeal = 3;
     int genderNB = 0;
@@ -22,8 +20,7 @@ public class Character_Stat : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        AnimatorController controller = GetComponent<AnimatorController>();
+        RuntimeAnimatorController controller = GetComponent<RuntimeAnimatorController>();
         //this.GetComponent<Animator>().runtimeAnimatorController = Controllers[genderNB];
 
         damage = 10;

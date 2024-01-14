@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.IO;
+using System;
 
 [System.Serializable]
 public class Parties
@@ -58,9 +59,17 @@ public class QuestionManager : MonoBehaviour
 
     void LoadQuestionsFromJSON()
     {
-        string jsonPath = "Assets/StreamingAssets/questionnaire.json"; // Chemin vers le fichier JSON
-        string json = File.ReadAllText(jsonPath);
-        questionData = JsonUtility.FromJson<Parties>(json);
+        string jsonPath = Path.Combine(Application.streamingAssetsPath, "questionnaire.json");
+
+        try
+        {
+            string json = File.ReadAllText(jsonPath);
+            questionData = JsonUtility.FromJson<Parties>(json);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Erreur de chargement du fichier JSON : " + e.Message);
+        }
     }
 
     public void DisplayQuestion(int index)
