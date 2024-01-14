@@ -2,37 +2,128 @@
     "parties": [
         {
             "partie": 1,
-            "partieNom": "Questions à choix simple",
+            "partieNom": "Comprendre et prévenir la toxicité dnas les jeux vidéos multijoueur en ligne",
             "questions": [
                 {
                     "questionType": "choice",
-                    "questionText": "Aimez vous les bananes ?",
+                    "questionText": "Avez vous beaucoup joué à des MOBA ?",
                     "choices": [
-                        "J'en mange tous les jours",
-                        "Tu me prends pour un singe?",
-                        "Je n'aime pas du tout",
-                        "Trop bon"
+                        "Oui et j'y joue encore",
+                        "Un peu mais ce n'est pas mon genre",
+                        "Pas du tout et cela ne m'intéresse pas",
+                        "Je ne sais pas ce qu'est un MOBA'"
                     ]
                 },
                 {
-                    "questionType": "choice",
-                    "questionText": "Comment trouves tu Mario Wonder ?",
+                    "questionType": "multiple-choice",
+                    "questionText": "A lequels de ces jeux avez vous joué ?",
                     "choices": [
-                        "Normal",
-                        "Trop dur",
-                        "J'aime le challenge",
-                        "Ez"
+                        "League of Legends",
+                        "Call of Duty",
+                        "Counter Strike",
+                        "Aucun"
                     ]
                 }
                 ,
                 {
                     "questionType": "choice",
-                    "questionText": "Êtes vous un gros dépenseur sur les gachas ?",
+                    "questionText": "Avez vous déjà rencontré une forme de toxicité quelconque dans un jeu ?",
                     "choices": [
-                        "Je dépense environ 50 euros par mois",
-                        "Je ne dépense aucun sous dedans",
-                        "Je dépense plus de 100 euros par mois",
-                        "Je dépense plus de 300 euros par mois"
+                        "Oui, tout les jours",
+                        "De temps en temps",
+                        "Jamais",
+                        "Très rarement"
+                    ]
+                }
+                ,
+                ,
+                {
+                    "questionType": "slider",
+                    "questionText": "Avez vous déjà rencontré une forme de toxicité quelconque dans un jeu ?",
+                    "choices": [
+                        "Oui, tout les jours",
+                        "De temps en temps",
+                        "Jamais",
+                        "Très rarement"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "scale",
+                    "questionText": "Sur une échelle de 1 à 10, à combien évaluez-vous la fréquence de la présence de comportement négatifs dans ces jeux ?",
+                    "minValue": 1,
+                    "maxValue": 10
+                }
+            ]
+        },
+        {
+            "partie": 2,
+            "partieNom": "Comment l'addiction des Gacha Games peuvent servir de motivation dans un serious game",
+            "questions": [
+                {
+                    "questionType": "scale",
+                    "questionText": "Sur une échelle de 1 à 10 à combien mesurez vous votre consommation de jeu de type Gacha Games?",
+                    "minValue": 1,
+                    "maxValue": 10
+                }
+                ,
+                {
+                    "questionType": "multiple-choice",
+                    "questionText": "A quels gacha jouez vous ?",
+                    "choices": [
+                        "Genshin Impact",
+                        "Autre",
+                        "Summoners War",
+                        "Fire emblem heroes"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "multiple-choice",
+                    "questionText": "Quels sont les points qui vous motive le plus à jouer à des Gacha ?",
+                    "choices": [
+                        "Ajout fréquents de mise à jours",
+                        "Aspect graphiques",
+                        "Les personnages",
+                        "Aspect compétitif"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "choice",
+                    "questionText": "Quel est votre dépense moyenne dans un gacha Games ?",
+                    "choices": [
+                        "0 euros",
+                        "Entre 0 et 20 euros par mois",
+                        "Entre 20 et 50 euros par mois",
+                        "Plus de 50 euros par mois"
+                    ]
+                }
+                ,
+                {
+                    "questionType": "choice",
+                    "questionText": "Vous considérez-vous comme addict aux gacha Games ?",
+                    "choices": [
+                        "Oui",
+                        "Pas vraiment",
+                        "Non",
+                        "Un peu"
+                    ]
+                }
+            ]
+        },
+        {
+            "partie": 3,
+            "partieNom": "Les MMORPG ont ils brisé l'isolation sociale pendant le covid-19",
+            "questions": [
+                {
+                    "questionType": "choice",
+                    "questionText": "Avez-vous ressenti une isolation sociale pendant le covid-19 ?",
+                    "choices": [
+                        "Oui",
+                        "Non",
+                        "Un peu",
+                        "Beaucoup"
                     ]
                 }
                 ,
@@ -49,105 +140,29 @@
                 ,
                 {
                     "questionType": "choice",
-                    "questionText": "Avez vous déjà rencontré une forme de toxicité quelconque dans un jeu ?",
+                    "questionText": "A quel MMORPG avez-vous joué ?",
                     "choices": [
-                        "Oui, tout les jours",
-                        "De temps en temps",
-                        "Jamais",
-                        "Très rarement"
-                    ]
-                }
-            ]
-        },
-        {
-            "partie": 2,
-            "partieNom": "Questions sur les choix multiples",
-            "questions": [
-                {
-                    "questionType": "multiple-choice",
-                    "questionText": "Quelles couleurs préférez-vous ?",
-                    "choices": [
-                        "Rouge",
-                        "Bleu",
-                        "Vert",
-                        "Jaune"
-                    ]
-                }
-                ,
-                {
-                    "questionType": "multiple-choice",
-                    "questionText": "Quelles types de jeux préférez vous ?",
-                    "choices": [
-                        "MMORPG",
-                        "gacha",
-                        "MOBA",
-                        "FPS"
-                    ]
-                }
-                ,
-                {
-                    "questionType": "multiple-choice",
-                    "questionText": "A quels gacha jouez vous ?",
-                    "choices": [
-                        "Genshin Impact",
-                        "Honkai : Star rail",
-                        "Summoners War",
-                        "Fire emblem heroes"
-                    ]
-                }
-                ,
-                {
-                    "questionType": "multiple-choice",
-                    "questionText": "Sentez vous une isolation sociale pendant le covid ?",
-                    "choices": [
-                        "Oui",
-                        "Non",
-                        "Un peu",
-                        "Beaucoup"
-                    ]
-                }
-                ,
-                {
-                    "questionType": "multiple-choice",
-                    "questionText": "Avez vous une addiction aux jeux d'argent ?",
-                    "choices": [
-                        "Oui",
-                        "Pas vraiment",
-                        "Non",
-                        "Je ne vois pas de quoi vous parlez"
-                    ]
-                }
-            ]
-        },
-        {
-            "partie": 3,
-            "partieNom": "Questions de type échelle",
-            "questions": [
-                {
-                    "questionType": "choice",
-                    "questionText": "Comment ça va ?",
-                    "choices": [
-                        "Mal",
-                        "Très mal",
-                        "Très très mal",
-                        "Ca va bieng"
+                        "Final Fantasy XIV",
+                        "World of Warcraft",
+                        "Eve Online",
+                        "Autre ou aucun"
                     ]
                 }
                 ,
                 {
                     "questionType": "choice",
-                    "questionText": "Comment trouvez vous ce boss ?",
+                    "questionText": "Vous êtes vous fait(e)s de nouvelles rencontre durant cette période grâce aux MMORPG ?",
                     "choices": [
-                        "Aïe mes yeux",
-                        "Ca brille",
-                        "Eblouissant",
-                        "Magnifique"
+                        "Oui et on se parle encore aujourd'hui",
+                        "On est devenu meilleurs ami(e)s",
+                        "Non",
+                        "Oui mais je n'ai plus de contact avec eux, c'était seulement des partenaires de jeux"
                     ]
                 }
                 ,
                 {
                     "questionType": "scale",
-                    "questionText": "Sur une échelle de 1 à 10, quelle note donneriez-vous à ce questionnaire ?",
+                    "questionText": "Sur une échelle de 1 à 10, à combien estimez vous être sortit de cette période difficile grâce aux MMORPG ?",
                     "minValue": 1,
                     "maxValue": 10
                 }
