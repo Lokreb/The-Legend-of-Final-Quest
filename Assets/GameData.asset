@@ -16,3 +16,4 @@ MonoBehaviour:
   savedQuestionIndex: 0
   nbBoss: 0
   playerGender: 0
+  intro: 0

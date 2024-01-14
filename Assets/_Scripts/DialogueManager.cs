@@ -5,53 +5,75 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    public GameManager GM;
     public FadeOut fadeOut;
     public PlayerMapController playerMapController;
     public SuiveurCompagnon suiveurCompagnon;
+    private bool isLastCharDisplayed;
+    public GameObject menuButton;
+    public Animator animator;
     public TMP_Text dialogueText;
-    public GameObject dialoguePanel; // Référence au GameObject du panel de dialogue
+    public GameObject dialoguePanel;
+    [TextAreaAttribute]
     public string[] dialogues;
-
+    public float displaySpeed = 1f;
     public Button nextButton; // Référence au bouton pour passer au dialogue suivant
 
     void Start()
     {
-        if (nextButton != null)
+        if(GM.nbIntro != 1)
         {
-            nextButton.interactable = false;
-        }
-    
-        // Assurez-vous que le script de FadeOut est désactivé au début
-        if (fadeOut != null)
-        {
-            fadeOut.enabled = false;
-        }
+            dialoguePanel.SetActive(true);
+            if (nextButton != null)
+            {
+                nextButton.interactable = false;
+            }
+            if (fadeOut != null)
+            {
+                fadeOut.enabled = false;
+            }
 
-        // Commencer le dialogue
-        StartCoroutine(StartDialogue());
+            // Commencer le dialogue
+            StartCoroutine(StartDialogue());
+        }
+        //DontDestroyOnLoad(gameObject);
     }
 
-    IEnumerator AfficherTexteProgressivement(string texte)
+    IEnumerator AfficherTexteProgressivement(string texte, float speed)
     {
         dialogueText.text = "";
         for (int i = 0; i < texte.Length; i++)
         {
             dialogueText.text += texte[i];
-            yield return new WaitForSeconds(0.1f);
+            isLastCharDisplayed = i == texte.Length - 1;
+            yield return new WaitForSeconds(speed);
         }
     }
 
     IEnumerator StartDialogue()
     {
+        menuButton.SetActive(false);
         playerMapController.StartDialogue();
         suiveurCompagnon.StartDialogue();
         for (int i = 0; i < dialogues.Length; i++)
         {
             dialogueText.text = dialogues[i];
 
-            yield return StartCoroutine(AfficherTexteProgressivement(dialogues[i]));
+            if (animator != null)
+            {
+                animator.SetBool("isTalking", true);
+            }
+
+            yield return StartCoroutine(AfficherTexteProgressivement(dialogues[i], displaySpeed));
+
+            if (animator != null && isLastCharDisplayed)
+            {
+                animator.SetBool("isTalking", false);
+                Debug.Log("Derniere lettre");
+            }
 
             yield return WaitForButtonPress();
+
 
             // Désactiver le bouton après le dernier dialogue
             if (i == dialogues.Length - 1)
@@ -64,8 +86,11 @@ public class DialogueManager : MonoBehaviour
                 // Désactiver le panel de dialogue
                 if (dialoguePanel != null)
                 {
+                    GM.saveIntro(1);
+                    GM.LoadIntro();
                     playerMapController.EndDialogue();
                     suiveurCompagnon.EndDialogue();
+                    menuButton.SetActive(true);
                     dialoguePanel.SetActive(false);
                 }
             }
@@ -80,7 +105,7 @@ public class DialogueManager : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(2f); // Temps d'affichage de chaque dialogue
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

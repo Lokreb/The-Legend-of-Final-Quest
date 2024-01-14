@@ -108,13 +108,16 @@ public class BattleSystem : MonoBehaviour
         Enemyname.text = "" + enemy_unit.enemyName;
         player_unit.level = GM.partie + 1;
         lvl.text = "" + player_unit.level.ToString();
+        GM.LoadGender();
+        player_unit.GenderChange(GM.gender);
+        Debug.Log(GM.gender);
         yield return new WaitForSeconds(1f);
         enemy_unit.NBQuestion = QuestionManagerGO.GetComponent<QuestionManager>().NbQuestion;
         enemy_unit.initiallisationHP();
         EnemyHPBar.maxValue = enemy_unit.MaxHealth;
         PlayerHPBar.maxValue = player_unit.maxHealth;
         player_unit.NBHeal = 3;
-        enemy_unit.weakness = Random.Range(1, 4);
+        enemy_unit.weakness = Random.Range(1, 5);
         DisablePanels();
         state = BattleState.PLAYERTURN;
         yield return new WaitForSeconds(1f);

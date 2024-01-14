@@ -11,5 +11,6 @@ public class GameData : ScriptableObject
     public int savedQuestionIndex;
     public int nbBoss;
     public int playerGender;
+    public int intro;
 
 }
