@@ -26,6 +26,7 @@ public class SuiveurCompagnon : MonoBehaviour
         {
             Vector3 newPosition = new Vector3(GM.passedPlayerPosition.x, GM.passedPlayerPosition.y, GM.passedPlayerPosition.z);
             joueur.transform.position = newPosition;
+            self.transform.position = newPosition;
         }
     }
 

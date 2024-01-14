@@ -11,6 +11,7 @@ public class PlayerMapController : MonoBehaviour
     public float speed = 5f;
     private Rigidbody2D rb;
     private Animator animator;
+    public Animator compagnonAnimator;
     private bool isDialogueActive = false;
 
     private void Start()
@@ -49,6 +50,9 @@ public class PlayerMapController : MonoBehaviour
     {
         animator.SetFloat("X", movement.x);
         animator.SetFloat("Y", movement.y);
+        compagnonAnimator.SetFloat("X", movement.x);
+        compagnonAnimator.SetFloat("Y", movement.y);
+
     }
 
     public void StartDialogue()

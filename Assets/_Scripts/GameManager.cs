@@ -12,10 +12,12 @@ public class GameManager : MonoBehaviour
     public int boss;
     public int gender;
     public int nbIntro;
+    public Transform boss1;
+    public Transform boss2;
     public static Vector3 savedPlayerPosition;
     public Vector3 passedPlayerPosition;
 
-    int worldSceneIndex = 1;
+    int worldSceneIndex = 2;
     // Start is called before the first frame update
     void Awake()
     {
@@ -30,13 +32,13 @@ public class GameManager : MonoBehaviour
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (boss == 1)
             {
-                Vector3 newPosition = new Vector3(savedPlayerPosition.x, savedPlayerPosition.y + 3.0f, savedPlayerPosition.z);
+                Vector3 newPosition = new Vector3(boss1.position.x, boss1.position.y + 2.0f, boss1.position.z);
                 player.transform.position = newPosition;
                 passedPlayerPosition = player.transform.position;
             }
             else if (boss == 2)
             {
-                Vector3 newPosition = new Vector3(savedPlayerPosition.x + 3.0f, savedPlayerPosition.y, savedPlayerPosition.z);
+                Vector3 newPosition = new Vector3(boss2.position.x + 2.0f, boss2.position.y, boss2.position.z);
                 player.transform.position = newPosition;
                 passedPlayerPosition = player.transform.position;
             }
