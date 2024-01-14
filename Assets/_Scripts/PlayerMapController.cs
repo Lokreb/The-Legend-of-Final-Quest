@@ -12,7 +12,7 @@ public class PlayerMapController : MonoBehaviour
     public float speed = 5f;
     private Rigidbody2D rb;
     private Animator animator;
-    public int gender = 0;
+    private bool isDialogueActive = false;
 
     private void Start()
     {
@@ -24,16 +24,18 @@ public class PlayerMapController : MonoBehaviour
 
     private void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        if (!isDialogueActive)
+        {
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
 
-        // Cr�ez un vecteur de mouvement � partir des entr�es du joueur.
-        Vector2 movement = new Vector2(horizontal, vertical);
+            // Créez un vecteur de mouvement à partir des entrées du joueur.
+            Vector2 movement = new Vector2(horizontal, vertical);
 
-        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
-        MovePlayer(movement);
+            rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+            MovePlayer(movement);
+        }
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -46,11 +48,17 @@ public class PlayerMapController : MonoBehaviour
 
     private void MovePlayer(Vector2 movement)
     {
-        // Calculer la position cible.
-        //Vector2 targetPosition = movement * speed;
-
         animator.SetFloat("X", movement.x);
         animator.SetFloat("Y", movement.y);
-        //rb.MovePosition(targetPosition);
+    }
+
+    public void StartDialogue()
+    {
+        isDialogueActive = true;
+    }
+
+    public void EndDialogue()
+    {
+        isDialogueActive = false;
     }
 }
