@@ -31,6 +31,15 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(StartDialogue());
     }
 
+    IEnumerator AfficherTexteProgressivement(string texte)
+    {
+        dialogueText.text = "";
+        for (int i = 0; i < texte.Length; i++)
+        {
+            dialogueText.text += texte[i];
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 
     IEnumerator StartDialogue()
     {
@@ -40,7 +49,8 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text = dialogues[i];
 
-            // Attendre que le joueur appuie sur le bouton ou la touche Entrée
+            yield return StartCoroutine(AfficherTexteProgressivement(dialogues[i]));
+
             yield return WaitForButtonPress();
 
             // Désactiver le bouton après le dernier dialogue
