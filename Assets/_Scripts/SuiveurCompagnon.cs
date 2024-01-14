@@ -8,6 +8,7 @@ public class SuiveurCompagnon : MonoBehaviour
     public float vitesseDuCompagnon = 5f;
 
     private Vector3 dernierePositionJoueur;
+    private bool isDialogueActive = false; // Ajout de la variable pour indiquer si un dialogue est en cours
 
     void Start()
     {
@@ -16,7 +17,10 @@ public class SuiveurCompagnon : MonoBehaviour
 
     void Update()
     {
-        SuivreDeplacementsJoueur();
+        if (!isDialogueActive) // V√©rifier si le dialogue est actif avant de permettre le suivi
+        {
+            SuivreDeplacementsJoueur();
+        }
     }
 
     void SuivreDeplacementsJoueur()
@@ -24,17 +28,28 @@ public class SuiveurCompagnon : MonoBehaviour
         // Obtient la direction actuelle du joueur
         Vector3 directionJoueur = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f).normalized;
 
-        // VÈrifie si le joueur a changÈ de direction
+        // V√©rifie si le joueur a chang√© de direction
         if (directionJoueur != Vector3.zero)
         {
-            // Calcul de la nouvelle position du compagnon en fonction de la direction opposÈe du joueur
+            // Calcul de la nouvelle position du compagnon en fonction de la direction oppos√©e du joueur
             Vector3 nouvellePositionCompagnon = joueur.position - directionJoueur * distanceSuivi;
 
-            // DÈplace le compagnon vers la nouvelle position
+            // D√©place le compagnon vers la nouvelle position
             transform.position = Vector3.MoveTowards(transform.position, nouvellePositionCompagnon, vitesseDuCompagnon * Time.deltaTime);
 
-            // Met ‡ jour la derniËre position du joueur
+            // Met √† jour la derni√®re position du joueur
             dernierePositionJoueur = joueur.position;
         }
+    }
+
+    // Ajout de m√©thodes pour activer/d√©sactiver le dialogue
+    public void StartDialogue()
+    {
+        isDialogueActive = true;
+    }
+
+    public void EndDialogue()
+    {
+        isDialogueActive = false;
     }
 }

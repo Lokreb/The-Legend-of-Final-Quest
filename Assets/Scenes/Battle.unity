@@ -2100,7 +2100,6 @@ GameObject:
   - component: {fileID: 369599500}
   - component: {fileID: 369599499}
   - component: {fileID: 369599501}
-  - component: {fileID: 369599502}
   m_Layer: 5
   m_Name: Panzo3
   m_TagString: Untagged
@@ -2208,18 +2207,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &369599502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 369599497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32c59561a5a878b46aac8d4480c3d4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &381670450
 GameObject:
   m_ObjectHideFlags: 0
@@ -4801,7 +4788,6 @@ GameObject:
   - component: {fileID: 769044922}
   - component: {fileID: 769044921}
   - component: {fileID: 769044923}
-  - component: {fileID: 769044924}
   m_Layer: 5
   m_Name: Panzo1
   m_TagString: Untagged
@@ -4909,18 +4895,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &769044924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769044919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32c59561a5a878b46aac8d4480c3d4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &798574469
 GameObject:
   m_ObjectHideFlags: 0
@@ -7308,7 +7282,6 @@ GameObject:
   - component: {fileID: 1158171703}
   - component: {fileID: 1158171702}
   - component: {fileID: 1158171704}
-  - component: {fileID: 1158171705}
   m_Layer: 5
   m_Name: Panzo2
   m_TagString: Untagged
@@ -7416,18 +7389,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1158171705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158171700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32c59561a5a878b46aac8d4480c3d4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1158972072
 GameObject:
   m_ObjectHideFlags: 0
