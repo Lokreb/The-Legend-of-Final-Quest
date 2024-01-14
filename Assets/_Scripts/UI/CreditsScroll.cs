@@ -21,6 +21,8 @@ public class CreditsScroll : MonoBehaviour
     public CanvasGroup canvasGroup;
     public GameObject[] BackGround;
     public float fadeInDuration = 1f;
+    public GameObject LastWord;
+    public Vector3 targetScale = new Vector3(1.6f, 1.6f, 1.0f); // Échelle finale de l'objet
 
     private void Start()
     {
@@ -31,6 +33,7 @@ public class CreditsScroll : MonoBehaviour
 
     IEnumerator ScrollCredits()
     {
+
         creditsText.text = ""; // Vider le texte
         TokenList[0].GetComponent<Animator>().runtimeAnimatorController = Token0[0];
         TokenList[1].GetComponent<Animator>().runtimeAnimatorController = Token1[0];
@@ -143,10 +146,46 @@ public class CreditsScroll : MonoBehaviour
             yield return new WaitForSeconds(scrollSpeed); // Attendre 1 seconde entre chaque entrée
         }
         // Attendre avant de changer de scène
+        yield return new WaitForSeconds(delayBeforeSceneChange + 5f);
+
+        foreach (var entry in TokenList)
+        {
+            entry.SetActive(false);
+        }
+        creditsText.text = "Merci de votre participation !";
         yield return new WaitForSeconds(delayBeforeSceneChange);
 
+        elapsedTime = 0f;
+        while (elapsedTime < fadeInDuration)
+        {
+            canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeInDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        canvasGroup.alpha = 0f;
+        BackGround[0].SetActive(false);
+        creditsText.text = "";
+       BackGround[4].SetActive(true);
+        fadeInDuration = 5f;
+        elapsedTime = 0f;
+        Vector3 initialScale = BackGround[4].transform.localScale;
+        while (elapsedTime < fadeInDuration)
+        {
+            canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsedTime / fadeInDuration);
+                // Interpolation linéaire de l'échelle entre l'échelle initiale et l'échelle cible
+                float scaleProgress = elapsedTime / fadeInDuration;
+            BackGround[4].transform.localScale = Vector3.Lerp(initialScale, targetScale, scaleProgress);         
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        canvasGroup.alpha = 1f;
+        fadeInDuration = 2f;
+
+        yield return new WaitForSeconds(10f);
+        Application.Quit();
+
         // Changer de scène (à adapter selon votre configuration)
-       // SceneManager.LoadScene("NomDeVotreScene");
+        // SceneManager.LoadScene("NomDeVotreScene");
     }
 
 
