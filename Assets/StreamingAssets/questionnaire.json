@@ -36,9 +36,8 @@
                     ]
                 }
                 ,
-                ,
                 {
-                    "questionType": "slider",
+                    "questionType": "scale",
                     "questionText": "Avez vous déjà rencontré une forme de toxicité quelconque dans un jeu ?",
                     "choices": [
                         "Oui, tout les jours",
