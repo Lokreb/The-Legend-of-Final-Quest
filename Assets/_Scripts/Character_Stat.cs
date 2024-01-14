@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Character_Stat : MonoBehaviour
 {
@@ -69,19 +70,37 @@ public class Character_Stat : MonoBehaviour
 
     public void heal()
     {
-        if(currentHealth < maxHealth && NBHeal > 0)
+        if (currentHealth < maxHealth && NBHeal > 0)
         {
             animator.SetFloat("isAttak", -1);
             currentHealth = maxHealth;
             NBHeal--;
-            
+
         }
-        
-        
+    } 
+      public void GenderChange(int genre )
+    {
+                if (genre == 0) 
+                {
+                     genderNB = 0;
+                     spriteRenderer.sprite = sprites[genderNB];
+                 }
+                 else if (genre == 1)
+                    {
+                        genderNB = 1;
+                         spriteRenderer.sprite = sprites[genderNB];
+                    }
+                 else if (genre == 2)
+                    {
+                     genderNB = 2;
+                       spriteRenderer.sprite = sprites[genderNB];
+                    }
+                       this.GetComponent<Animator>().runtimeAnimatorController = Controllers[genderNB];
+       }  
             
         
         
-    }
+    
 }
     
 
